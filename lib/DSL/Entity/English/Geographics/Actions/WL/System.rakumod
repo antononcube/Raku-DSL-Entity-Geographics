@@ -32,20 +32,39 @@ use v6;
 
 use DSL::Entity::English::Geographics::Grammar;
 use DSL::Shared::Actions::English::WL::PipelineCommand;
+use DSL::Entity::English::Geographics::ResourceAccess;
+
+my DSL::Entity::English::Geographics::ResourceAccess $resources.instance;
 
 class DSL::Entity::English::Geographics::Actions::WL::System
         is DSL::Shared::Actions::English::WL::PipelineCommand {
 
-    method TOP($/) { make $/.values[0].made; }
+    ##========================================================
+    ## Grammar methods
+    ##========================================================
 
-    method geographic-entity-command($/) { make $/.values[0].made; }
+    method TOP($/) {
+        make $/.values[0].made;
+    }
 
-    method country-name-faster-match($/) { make 'Entity["' ~ $/.Str ~ '"]'; }
+    method geographic-entity-command($/) {
+        make $/.values[0].made;
+    }
 
-    method country-adjective-faster-match($/) { make 'Entity["' ~ $/.Str ~ '"]'; }
+    method country-name-faster-match($/) {
+        make 'Entity["' ~ $/.Str ~ '"]';
+    }
 
-#    method country-name-known($/) { make 'Entity[' ~ $/.Str ~ ']'; }
+    method country-adjective-faster-match($/) {
+        make 'Entity["' ~ $resources.country-adjective-to-name($/.Str.lc) ~ '"]';
+    }
+
+#    method country-name-known($/) {
+#        make $/.Str;
+#    }
 #
-#    method country-adjective-known($/) { make 'Entity[' ~ $/.Str ~ ']'; }
+#    method country-adjective-known($/) {
+#        make $/.Str;
+#    }
 
 }

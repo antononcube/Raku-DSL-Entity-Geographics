@@ -11,6 +11,7 @@
   "license": "GPL-3.0-or-later",
   "provides": {
     "DSL::Entity::English::Geographics": "lib/DSL/Entity/English/Geographics.rakumod",
+    "DSL::Entity::English::Geographics::ResourceAccess": "lib/DSL/Entity/English/Geographics/ResourceAccess.rakumod",
     "DSL::Entity::English::Geographics::Grammar": "lib/DSL/Entity/English/Geographics/Grammar.rakumod",
     "DSL::Entity::English::Geographics::Grammar::CountryNames": "lib/DSL/Entity/English/Geographics/Grammar/CountryNames.rakumod",
     "DSL::Entity::English::Geographics::Grammar::CountryAdjectives": "lib/DSL/Entity/English/Geographics/Grammar/CountryAdjectives.rakumod",

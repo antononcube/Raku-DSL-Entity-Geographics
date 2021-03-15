@@ -2,26 +2,10 @@ use v6;
 
 use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Utilities::FuzzyMatching;
+use DSL::Entity::English::Geographics::ResourceAccess;
 
-#-----------------------------------------------------------
-my $fileName = %?RESOURCES<CountryNames.txt>;
+my DSL::Entity::English::Geographics::ResourceAccess $resources.instance;
 
-my Str @countryNames = $fileName.lines;
-
-my Set $knownCountryNames = Set(@countryNames.map(*.lc));
-
-my Set $knownCountryNameWords = Set(@countryNames.map({ $_.split(/\h+/) }).flat.trim.lc);
-
-#-----------------------------------------------------------
-our sub known-country-name-word (Str:D $word, Bool :$bool = True, Bool :$warn = True) {
-    known-string($knownCountryNameWords, $word, :$bool, :$warn)
-}
-
-our sub known-country-name(Str:D $phrase, Bool :$bool = True, Bool :$warn = True) {
-    known-phrase( $knownCountryNames, $knownCountryNameWords, $phrase, :$bool, :$warn )
-}
-
-#-----------------------------------------------------------
 role DSL::Entity::English::Geographics::Grammar::CountryNames
         does DSL::Shared::Roles::English::PipelineCommand {
 
@@ -30,6 +14,6 @@ role DSL::Entity::English::Geographics::Grammar::CountryNames
     }
 
     rule country-name-known {
-        ( <word-value>+ % \h+ ) <?{ known-country-name($0.Str.lc) }>
+        ( <word-value>+ % \h+ ) <?{ $resources.known-country-name($0.Str.lc) }>
     }
 }

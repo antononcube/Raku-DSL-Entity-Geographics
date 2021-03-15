@@ -1,12 +1,25 @@
 use lib './lib';
 use lib '.';
 use DSL::Entity::English::Geographics;
+use DSL::Entity::English::Geographics::ResourceAccess;
+
+#my DSL::Entity::English::Geographics::ResourceAccess $resource.instance;
+#
+#my DSL::Entity::English::Geographics::ResourceAccess $resource2.instance;
+#
+#say 'Map with resources:', $resource.country-adjective-to-name("Chinese");
+#
+#say 'Map with resources:', $resource2.country-adjective-to-name("Bulgarian");
+#
+#say 'Map with resources:', $resource2.country-adjective-to-name("Armenian");
+#
+#say 'Number of resource objects:', $resource.getNumberOfInstances();
 
 my $pCOMMAND = DSL::Entity::English::Geographics::Grammar;
 
 #use Grammar::Tracer;
 
-#say $pCOMMAND.parse('Argentina', rule => 'geographic-entity-command');
+say $pCOMMAND.parse('Argentina', rule => 'geographic-entity-command');
 #
 #say $pCOMMAND.parse('Bulgarian', rule => 'geographic-entity-command');
 #
@@ -20,6 +33,8 @@ say "=" x 60;
 
 my @testCommands = (
 'Argentina',
+'Bulgaria',
+'Bulgarian',
 'China',
 'Chinese'
 );
