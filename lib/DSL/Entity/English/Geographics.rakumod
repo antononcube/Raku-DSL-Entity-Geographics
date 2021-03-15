@@ -19,6 +19,7 @@ use DSL::Shared::Utilities::FuzzyMatching;
 use DSL::Shared::Utilities::MetaSpecsProcessing;
 
 use DSL::Entity::English::Geographics::Grammar;
+use DSL::Entity::English::Geographics::Actions::WL::Entity;
 use DSL::Entity::English::Geographics::Actions::WL::System;
 
 use DSL::Entity::English::Geographics::Actions::Bulgarian::Standard;
@@ -28,6 +29,7 @@ my %targetToAction =
     "Mathematica"      => DSL::Entity::English::Geographics::Actions::WL::System,
     "WL"               => DSL::Entity::English::Geographics::Actions::WL::System,
     "WL-System"        => DSL::Entity::English::Geographics::Actions::WL::System,
+    "WL-Entity"        => DSL::Entity::English::Geographics::Actions::WL::Entity,
     "Bulgarian"        => DSL::Entity::English::Geographics::Actions::Bulgarian::Standard;
 
 my %targetToSeparator{Str} =
@@ -37,6 +39,7 @@ my %targetToSeparator{Str} =
     "Mathematica"      => "\n",
     "WL"               => ";\n",
     "WL-System"        => ";\n",
+    "WL-Entity"        => ";\n",
     "Bulgarian"        => "\n";
 
 #-----------------------------------------------------------

@@ -16,6 +16,7 @@
     "DSL::Entity::English::Geographics::Grammar::CountryNames": "lib/DSL/Entity/English/Geographics/Grammar/CountryNames.rakumod",
     "DSL::Entity::English::Geographics::Grammar::CountryAdjectives": "lib/DSL/Entity/English/Geographics/Grammar/CountryAdjectives.rakumod",
     "DSL::Entity::English::Geographics::Actions::Bulgarian::Standard": "lib/DSL/Entity/English/Geographics/Actions/Bulgarian/Standard.rakumod",
+    "DSL::Entity::English::Geographics::Actions::WL::Entity": "lib/DSL/Entity/English/Geographics/Actions/WL/Entity.rakumod",
     "DSL::Entity::English::Geographics::Actions::WL::System": "lib/DSL/Entity/English/Geographics/Actions/WL/System.rakumod"
   },
   "depends": [

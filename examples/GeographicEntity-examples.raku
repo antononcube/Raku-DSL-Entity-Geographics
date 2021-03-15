@@ -40,7 +40,7 @@ my @testCommands = (
 );
 
 
-my @targets = ('WL-System');
+my @targets = ('WL-System', 'WL-Entity');
 
 for @testCommands -> $c {
     say "=" x 30;

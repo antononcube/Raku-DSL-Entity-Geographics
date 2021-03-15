@@ -1,7 +1,7 @@
 =begin comment
 #==============================================================================
 #
-#   Geographic Entities WL-System actions in Raku (Perl 6)
+#   Geographic Entities WL-Entity actions in Raku (Perl 6)
 #   Copyright (C) 2021  Anton Antonov
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@ use DSL::Entity::English::Geographics::ResourceAccess;
 
 my DSL::Entity::English::Geographics::ResourceAccess $resources.instance;
 
-class DSL::Entity::English::Geographics::Actions::WL::System
+class DSL::Entity::English::Geographics::Actions::WL::Entity
         is DSL::Shared::Actions::English::WL::PipelineCommand {
 
     ##========================================================
@@ -52,10 +52,10 @@ class DSL::Entity::English::Geographics::Actions::WL::System
     }
 
     method country-name-faster-match($/) {
-        make '"Country" -> "' ~ $/.Str ~ '"';
+        make 'Entity["Country", "' ~ $/.Str ~ '"]';
     }
 
     method country-adjective-faster-match($/) {
-        make '"Country" -> "' ~ $resources.country-adjective-to-name($/.Str.lc) ~ '"';
+        make 'Entity["Country", "' ~ $resources.country-adjective-to-name($/.Str.lc) ~ '"]';
     }
 }

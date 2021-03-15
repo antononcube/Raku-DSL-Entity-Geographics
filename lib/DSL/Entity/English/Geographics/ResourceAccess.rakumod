@@ -19,11 +19,11 @@ class DSL::Entity::English::Geographics::ResourceAccess {
 
     my Int $numberOfInstances = 0;
 
-    method getNumberOfInstances() {
-        $numberOfInstances
-    }
+    method getNumberOfInstances() { $numberOfInstances }
 
-    my Int $numberOfCalls = 0;
+    my Int $numberOfMakeCalls = 0;
+
+    method getNumberOfMakeCalls() { $numberOfMakeCalls }
 
     method new {!!!}
 
@@ -41,8 +41,8 @@ class DSL::Entity::English::Geographics::ResourceAccess {
     }
 
     method make() {
-        $numberOfCalls += 1;
-        say "Number of calls to .make $numberOfCalls";
+        $numberOfMakeCalls += 1;
+        #say "Number of calls to .make $numberOfCalls";
 
         #-----------------------------------------------------------
         my $fileName = %?RESOURCES<CountryNames.txt>;
