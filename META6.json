@@ -1,0 +1,40 @@
+{
+  "perl": "6.d",
+  "name": "DSL::Entity::English::Geographics",
+  "api": "1",
+  "auth": "github:antononcube",
+  "version": "0.1.0",
+  "description": "Grammars for geographic entities: countries, states, cities, ZIP codes, etc.",
+  "authors": [
+    "Anton Antonov"
+  ],
+  "license": "GPL-3.0-or-later",
+  "provides": {
+    "DSL::Entity::English::Geographics": "lib/DSL/Entity/English/Geographics.rakumod",
+    "DSL::Entity::English::Geographics::Grammar": "lib/DSL/Entity/English/Geographics/Grammar.rakumod",
+    "DSL::Entity::English::Geographics::Grammar::CountryNames": "lib/DSL/Entity/English/Geographics/Grammar/CountryNames.rakumod",
+    "DSL::Entity::English::Geographics::Grammar::CountryAdjectives": "lib/DSL/Entity/English/Geographics/Grammar/CountryAdjectives.rakumod",
+    "DSL::Entity::English::Geographics::Actions::Bulgarian::Standard": "lib/DSL/Entity/English/Geographics/Actions/Bulgarian/Standard.rakumod",
+    "DSL::Entity::English::Geographics::Actions::WL::System": "lib/DSL/Entity/English/Geographics/Actions/WL/System.rakumod"
+  },
+  "depends": [
+    "DSL::Shared"
+  ],
+  "build-depends": [],
+  "test-depends": [],
+  "resources": [
+    "CountryNames.txt",
+    "CountryAdjectiveToName.csv"
+  ],
+  "tags": [
+    "city",
+    "country",
+    "geographic",
+    "state",
+    "entity",
+    "parser",
+    "interpreter",
+    "ner"
+  ],
+  "source-url": "https://github.com/antononcube/Raku-DSL-Entity-English-Jobs.git"
+}
