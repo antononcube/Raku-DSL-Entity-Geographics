@@ -13,7 +13,7 @@ role DSL::Entity::English::Geographics::Grammar::CountryNames
         <country-name-known>
     }
 
-    rule country-name-known {
+    regex country-name-known {
         ( <word-value>+ % \h+ ) <?{ $resources.known-country-name($0.Str.lc) }>
     }
 }

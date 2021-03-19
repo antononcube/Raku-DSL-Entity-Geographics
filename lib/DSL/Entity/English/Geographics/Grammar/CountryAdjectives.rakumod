@@ -12,7 +12,8 @@ role DSL::Entity::English::Geographics::Grammar::CountryAdjectives
     rule country-adjective-faster-match {
         <country-adjective-known>
     }
-    rule country-adjective-known {
+
+    regex country-adjective-known {
         (<word-value>+ % \h+ ) <?{ $resources.known-country-adjective($0.Str.lc) }>
     }
 }
