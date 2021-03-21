@@ -19,7 +19,7 @@ my $pCOMMAND = DSL::Entity::English::Geographics::Grammar;
 
 #use Grammar::Tracer;
 
-say $pCOMMAND.parse('Argentina', rule => 'geographic-entity-command');
+say $pCOMMAND.parse('Argentina country', rule => 'geographic-entity-command');
 #
 #say $pCOMMAND.parse('Bulgarian', rule => 'geographic-entity-command');
 #
@@ -33,14 +33,11 @@ say "=" x 60;
 
 my @testCommands = (
 'Argentina',
-'Bulgaria',
-'Bulgarian',
-'China',
-'Chinese'
+'Mediterranian'
 );
 
 
-my @targets = ('WL-System', 'WL-Entity');
+my @targets = ('WL-Entity');
 
 for @testCommands -> $c {
     say "=" x 30;

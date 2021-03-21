@@ -51,11 +51,23 @@ class DSL::Entity::English::Geographics::Actions::WL::Entity
         make $/.values[0].made;
     }
 
-    method country-name-faster-match($/) {
-        make 'Entity["Country", "' ~ $/.Str ~ '"]';
+    method entity-country-name($/) {
+        my $nm = $resources.known-name('Country', $/.Str.lc, :!bool, :!warn);
+        make 'Entity["Country", "' ~ $nm.wordcase ~ '"]';
     }
 
-    method country-adjective-faster-match($/) {
-        make 'Entity["Country", "' ~ $resources.country-adjective-to-name($/.Str.lc) ~ '"]';
+    method entity-country-adjective($/) {
+        my $adj = $resources.known-adjective('Country', $/.Str.lc, :!bool, :!warn);
+        make 'Entity["Country", "' ~ $adj.wordcase ~ '"]';
+    }
+
+    method entity-region-name($/) {
+        my $nm = $resources.known-name('Region', $/.Str.lc, :!bool, :!warn);
+        make 'EntityClass["Country", "' ~ $nm.wordcase ~ '"]';
+    }
+
+    method entity-region-adjective($/) {
+        my $adj = $resources.known-adjective('Region', $/.Str.lc, :!bool, :!warn);
+        make 'EntityClass["Country", "' ~ $adj.wordcase ~ '"]';
     }
 }

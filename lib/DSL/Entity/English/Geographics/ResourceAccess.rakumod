@@ -5,11 +5,11 @@ class DSL::Entity::English::Geographics::ResourceAccess {
     ##========================================================
     ## Data
     ##========================================================
-    my %countryAdjectiveToName;
-    my Set $knownCountryNames;
-    my Set $knownCountryNameWords;
-    my Set $knownCountryAdjectives;
-    my Set $knownCountryAdjectiveWords;
+    my Hash %adjectiveToName{Str};
+    my Set %knownNames{Str};
+    my Set %knownNameWords{Str};
+    my Set %knownAdjectives{Str};
+    my Set %knownAdjectiveWords{Str};
 
     ##========================================================
     ## BUILD
@@ -42,53 +42,67 @@ class DSL::Entity::English::Geographics::ResourceAccess {
 
     method make() {
         $numberOfMakeCalls += 1;
-        #say "Number of calls to .make $numberOfCalls";
+        #say "Number of calls to .make $numberOfMakeCalls";
 
         #-----------------------------------------------------------
-        my $fileName = %?RESOURCES<CountryNames.txt>;
-
-        my Str @countryNames = $fileName.lines;
-
-        $knownCountryNames = Set(@countryNames.map(*.lc));
-
-        $knownCountryNameWords = Set(@countryNames.map({ $_.split(/\h+/) }).flat.trim.lc);
+        for <Country Region> -> $fn {
+            my $fileName = %?RESOURCES{$fn ~ 'Names.txt'};
+            my Str @countryNames = $fileName.lines;
+            %knownNames.push( $fn => Set( @countryNames.map(*.lc) ) );
+            %knownNameWords.push( $fn => Set(@countryNames.map({ $_.split(/\h+/) }).flat.trim.lc) );
+        }
 
         #-----------------------------------------------------------
-        $fileName = %?RESOURCES<CountryAdjectiveToName.csv>;
+        for <Country Region> -> $fn {
+            my $fileName = %?RESOURCES{$fn ~ 'AdjectiveToName.csv'};
+            my Str @adjNamPairs = $fileName.lines;
 
-        my Str @adjNamPairs = $fileName.lines;
+            my %adjRules = @adjNamPairs.map({ $_.split(',') }).flat;
 
-        %countryAdjectiveToName = @adjNamPairs.map({ $_.split(',') }).flat;
+            %adjRules = %adjRules.keys.map(*.lc) Z=> %adjRules.values;
 
-        %countryAdjectiveToName = %countryAdjectiveToName.keys.map(*.lc) Z=> %countryAdjectiveToName.values;
+            %adjectiveToName.push( $fn => %adjRules );
 
-        $knownCountryAdjectives = Set(%countryAdjectiveToName);
+            %knownAdjectives.push( $fn => Set(%adjRules) );
 
-        $knownCountryAdjectiveWords = Set(%countryAdjectiveToName.keys.map({ $_.split(/h+/) }).flat);
+            %knownAdjectiveWords.push( $fn => Set(%adjRules.keys.map({ $_.split(/h+/) }).flat) );
+        }
 
+        #-----------------------------------------------------------
         self
     }
 
     ##========================================================
     ## Access
     ##========================================================
-    method known-country-name-word (Str:D $word, Bool :$bool = True, Bool :$warn = True) {
-        known-string($knownCountryNameWords, $word, :$bool, :$warn)
+    method known-name-word(Str:D $class, Str:D $word, Bool :$bool = True, Bool :$warn = True) {
+        known-string(%knownNameWords{$class}, $word, :$bool, :$warn)
     }
 
     #-----------------------------------------------------------
-    method known-country-name(Str:D $phrase, Bool :$bool = True, Bool :$warn = True) {
-        $phrase (elem) $knownCountryAdjectives ?? False !! known-phrase($knownCountryNames, $knownCountryNameWords, $phrase, :$bool, :$warn)
+    method known-name(Str:D $class, Str:D $phrase, Bool :$bool = True, Bool :$warn = True) {
+        ## If the name candidate $phrase is a known adjective, then return False/Nil.
+        ##if $phrase (elem) %knownAdjectives{$class} {
+        ##    $bool ?? False !! Nil
+        ##} else {
+        known-phrase(%knownNames{$class}, %knownNameWords{$class}, $phrase, :$bool, :$warn)
+        ##}
     }
 
     #-----------------------------------------------------------
-    method known-country-adjective(Str:D $phrase, Bool :$bool = True, Bool :$warn = True) {
-        $phrase (elem) $knownCountryNames ?? False !! known-phrase($knownCountryAdjectives, $knownCountryAdjectiveWords, $phrase, :$bool, :$warn)
+    method known-adjective(Str:D $class, Str:D $phrase, Bool :$bool = True, Bool :$warn = True) {
+        ## If the adjective candidate $phrase is a known name, then return False/Nil.
+        if $phrase (elem) %knownNames{$class} {
+            $bool ?? False !! Nil
+        } else {
+            known-phrase(%knownAdjectives{$class}, %knownAdjectiveWords{$class}, $phrase, :$bool, :$warn)
+        }
     }
 
     #-----------------------------------------------------------
-    method country-adjective-to-name(Str:D $phrase, Bool :$warn = True) {
-        %countryAdjectiveToName{$phrase}
+    method adjective-to-name(Str:D $class, Str:D $phrase, Bool :$warn = False) {
+        my $adj = self.known-adjective($class, $phrase, :!bool, :$warn);
+        %adjectiveToName{$class}{$adj}
     }
 
 }

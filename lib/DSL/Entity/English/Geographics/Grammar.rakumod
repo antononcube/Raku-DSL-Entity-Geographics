@@ -1,7 +1,7 @@
 =begin comment
 #==============================================================================
 #
-#   Job enities grammar in Raku
+#   Georaphics entities grammar in Raku
 #   Copyright (C) 2021  Anton Antonov
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -33,13 +33,13 @@ use v6;
 use DSL::Shared::Roles::PredicateSpecification;
 use DSL::Shared::Roles::ErrorHandling;
 
-use DSL::Entity::English::Geographics::Grammar::CountryNames;
-use DSL::Entity::English::Geographics::Grammar::CountryAdjectives;
+use DSL::Entity::English::Geographics::Grammar::EntityNames;
+use DSL::Entity::English::Geographics::Grammar::EntityAdjectives;
 
 grammar DSL::Entity::English::Geographics::Grammar
         does DSL::Shared::Roles::ErrorHandling
-        does DSL::Entity::English::Geographics::Grammar::CountryNames
-        does DSL::Entity::English::Geographics::Grammar::CountryAdjectives {
+        does DSL::Entity::English::Geographics::Grammar::EntityNames
+        does DSL::Entity::English::Geographics::Grammar::EntityAdjectives {
     # TOP
     rule TOP {
         <pipeline-command> |
@@ -47,7 +47,7 @@ grammar DSL::Entity::English::Geographics::Grammar
         <data-query-command>
     }
 
-    rule geographic-entity-command { <country-adjective-faster-match> || <country-name-faster-match> }
+    rule geographic-entity-command { <entity-country-adjective> || <entity-country-name> || <entity-region-adjective> || <entity-region-name> }
 
     rule geographic-entity-type  { 'counties' | 'cities' | 'states' | 'people' }
 

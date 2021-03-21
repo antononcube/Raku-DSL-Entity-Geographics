@@ -13,8 +13,8 @@
     "DSL::Entity::English::Geographics": "lib/DSL/Entity/English/Geographics.rakumod",
     "DSL::Entity::English::Geographics::ResourceAccess": "lib/DSL/Entity/English/Geographics/ResourceAccess.rakumod",
     "DSL::Entity::English::Geographics::Grammar": "lib/DSL/Entity/English/Geographics/Grammar.rakumod",
-    "DSL::Entity::English::Geographics::Grammar::CountryNames": "lib/DSL/Entity/English/Geographics/Grammar/CountryNames.rakumod",
-    "DSL::Entity::English::Geographics::Grammar::CountryAdjectives": "lib/DSL/Entity/English/Geographics/Grammar/CountryAdjectives.rakumod",
+    "DSL::Entity::English::Geographics::Grammar::EntityAdjectives": "lib/DSL/Entity/English/Geographics/Grammar/EntityAdjectives.rakumod",
+    "DSL::Entity::English::Geographics::Grammar::EntityNames": "lib/DSL/Entity/English/Geographics/Grammar/EntityNames.rakumod",
     "DSL::Entity::English::Geographics::Actions::Bulgarian::Standard": "lib/DSL/Entity/English/Geographics/Actions/Bulgarian/Standard.rakumod",
     "DSL::Entity::English::Geographics::Actions::WL::Entity": "lib/DSL/Entity/English/Geographics/Actions/WL/Entity.rakumod",
     "DSL::Entity::English::Geographics::Actions::WL::System": "lib/DSL/Entity/English/Geographics/Actions/WL/System.rakumod"
@@ -26,7 +26,9 @@
   "test-depends": [],
   "resources": [
     "CountryNames.txt",
-    "CountryAdjectiveToName.csv"
+    "CountryAdjectiveToName.csv",
+    "RegionNames.txt",
+    "RegionAdjectiveToName.csv"
   ],
   "tags": [
     "city",
