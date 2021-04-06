@@ -5,7 +5,8 @@ class DSL::Entity::English::Geographics::ResourceAccess {
     ##========================================================
     ## Data
     ##========================================================
-    my Hash %adjectiveToName{Str};
+    my Hash %nameToEntityID{Str};
+    my Hash %adjectiveToEntityID{Str};
     my Set %knownNames{Str};
     my Set %knownNameWords{Str};
     my Set %knownAdjectives{Str};
@@ -46,22 +47,29 @@ class DSL::Entity::English::Geographics::ResourceAccess {
 
         #-----------------------------------------------------------
         for <Country Region> -> $fn {
-            my $fileName = %?RESOURCES{$fn ~ 'Names.txt'};
-            my Str @countryNames = $fileName.lines;
-            %knownNames.push( $fn => Set( @countryNames.map(*.lc) ) );
-            %knownNameWords.push( $fn => Set(@countryNames.map({ $_.split(/\h+/) }).flat.trim.lc) );
+            my $fileName = %?RESOURCES{$fn ~ 'NameToEntityID_EN.csv'};
+            my Str @nameIDPairs = $fileName.lines;
+
+            my %nameRules = @nameIDPairs.map({ $_.split(',') }).flat;
+            %nameRules = %nameRules.keys.map(*.lc) Z=> %nameRules.values;
+
+            %nameToEntityID.push( $fn => %nameRules );
+
+            %knownNames.push( $fn => Set(%nameRules) );
+
+            %knownNameWords.push( $fn => Set(%nameRules.keys.map({ $_.split(/h+/) }).flat) );
         }
 
         #-----------------------------------------------------------
         for <Country Region> -> $fn {
-            my $fileName = %?RESOURCES{$fn ~ 'AdjectiveToName.csv'};
-            my Str @adjNamPairs = $fileName.lines;
+            my $fileName = %?RESOURCES{$fn ~ 'AdjectiveToEntityID_EN.csv'};
+            my Str @adjNamePairs = $fileName.lines;
 
-            my %adjRules = @adjNamPairs.map({ $_.split(',') }).flat;
+            my %adjRules = @adjNamePairs.map({ $_.split(',') }).flat;
 
             %adjRules = %adjRules.keys.map(*.lc) Z=> %adjRules.values;
 
-            %adjectiveToName.push( $fn => %adjRules );
+            %adjectiveToEntityID.push( $fn => %adjRules );
 
             %knownAdjectives.push( $fn => Set(%adjRules) );
 
@@ -100,9 +108,15 @@ class DSL::Entity::English::Geographics::ResourceAccess {
     }
 
     #-----------------------------------------------------------
-    method adjective-to-name(Str:D $class, Str:D $phrase, Bool :$warn = False) {
-        my $adj = self.known-adjective($class, $phrase, :!bool, :$warn);
-        %adjectiveToName{$class}{$adj}
+    method name-to-entity-id(Str:D $class, Str:D $phrase, Bool :$warn = False) {
+        my $name = self.known-name($class, $phrase.lc, :!bool, :$warn);
+        $name ?? %nameToEntityID{$class}{$name} !! Nil
+    }
+
+    #-----------------------------------------------------------
+    method adjective-to-entity-id(Str:D $class, Str:D $phrase, Bool :$warn = False) {
+        my $adj = self.known-adjective($class, $phrase.lc, :!bool, :$warn);
+        $adj ?? %adjectiveToEntityID{$class}{$adj} !! Nil
     }
 
 }
