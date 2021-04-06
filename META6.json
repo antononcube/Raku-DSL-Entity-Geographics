@@ -28,7 +28,7 @@
     "CountryNameToEntityID_EN.csv",
     "CountryAdjectiveToEntityID_EN.csv",
     "RegionNameToEntityID_EN.csv",
-    "RegionAdjectiveToEntity_EN.csv"
+    "RegionAdjectiveToEntityID_EN.csv"
   ],
   "tags": [
     "city",
