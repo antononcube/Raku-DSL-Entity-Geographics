@@ -1,4 +1,4 @@
-# DSL Entity English Geographics
+# Raku DSL::Entity::Geographics
 
 Raku grammar classes for geographic entities (names.)
 
