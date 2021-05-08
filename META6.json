@@ -8,7 +8,7 @@
   "authors": [
     "Anton Antonov"
   ],
-  "license": "GPL-3.0-or-later",
+  "license": "Artistic-2.0",
   "provides": {
     "DSL::Entity::Geographics": "lib/DSL/Entity/Geographics.rakumod",
     "DSL::Entity::Geographics::ResourceAccess": "lib/DSL/Entity/Geographics/ResourceAccess.rakumod",
