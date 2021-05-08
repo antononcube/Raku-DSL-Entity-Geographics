@@ -1,6 +1,6 @@
 {
   "perl": "6.d",
-  "name": "DSL::Entity::English::Geographics",
+  "name": "DSL::Entity::Geographics",
   "api": "1",
   "auth": "github:antononcube",
   "version": "0.1.0",
@@ -10,14 +10,14 @@
   ],
   "license": "GPL-3.0-or-later",
   "provides": {
-    "DSL::Entity::English::Geographics": "lib/DSL/Entity/English/Geographics.rakumod",
-    "DSL::Entity::English::Geographics::ResourceAccess": "lib/DSL/Entity/English/Geographics/ResourceAccess.rakumod",
-    "DSL::Entity::English::Geographics::Grammar": "lib/DSL/Entity/English/Geographics/Grammar.rakumod",
-    "DSL::Entity::English::Geographics::Grammar::EntityAdjectives": "lib/DSL/Entity/English/Geographics/Grammar/EntityAdjectives.rakumod",
-    "DSL::Entity::English::Geographics::Grammar::EntityNames": "lib/DSL/Entity/English/Geographics/Grammar/EntityNames.rakumod",
-    "DSL::Entity::English::Geographics::Actions::Bulgarian::Standard": "lib/DSL/Entity/English/Geographics/Actions/Bulgarian/Standard.rakumod",
-    "DSL::Entity::English::Geographics::Actions::WL::Entity": "lib/DSL/Entity/English/Geographics/Actions/WL/Entity.rakumod",
-    "DSL::Entity::English::Geographics::Actions::WL::System": "lib/DSL/Entity/English/Geographics/Actions/WL/System.rakumod"
+    "DSL::Entity::Geographics": "lib/DSL/Entity/Geographics.rakumod",
+    "DSL::Entity::Geographics::ResourceAccess": "lib/DSL/Entity/Geographics/ResourceAccess.rakumod",
+    "DSL::Entity::Geographics::Grammar": "lib/DSL/Entity/Geographics/Grammar.rakumod",
+    "DSL::Entity::Geographics::Grammar::EntityAdjectives": "lib/DSL/Entity/Geographics/Grammar/EntityAdjectives.rakumod",
+    "DSL::Entity::Geographics::Grammar::EntityNames": "lib/DSL/Entity/Geographics/Grammar/EntityNames.rakumod",
+    "DSL::Entity::Geographics::Actions::Bulgarian::Standard": "lib/DSL/Entity/Geographics/Actions/Bulgarian/Standard.rakumod",
+    "DSL::Entity::Geographics::Actions::WL::Entity": "lib/DSL/Entity/Geographics/Actions/WL/Entity.rakumod",
+    "DSL::Entity::Geographics::Actions::WL::System": "lib/DSL/Entity/Geographics/Actions/WL/System.rakumod"
   },
   "depends": [
     "DSL::Shared"
@@ -40,5 +40,5 @@
     "interpreter",
     "ner"
   ],
-  "source-url": "https://github.com/antononcube/Raku-DSL-Entity-English-Jobs.git"
+  "source-url": "https://github.com/antononcube/Raku-DSL-Entity-Geographics.git"
 }

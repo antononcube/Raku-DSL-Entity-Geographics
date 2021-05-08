@@ -1,7 +1,7 @@
 use DSL::Shared::Utilities::FuzzyMatching;
 use DSL::Shared::Utilities::MetaSpecsProcessing;
 
-class DSL::Entity::English::Geographics::ResourceAccess {
+class DSL::Entity::Geographics::ResourceAccess {
     ##========================================================
     ## Data
     ##========================================================
@@ -16,7 +16,7 @@ class DSL::Entity::English::Geographics::ResourceAccess {
     ## BUILD
     ##========================================================
     # We create a lexical variable in the class block that holds our single instance.
-    my DSL::Entity::English::Geographics::ResourceAccess $instance = Nil;
+    my DSL::Entity::Geographics::ResourceAccess $instance = Nil;
 
     my Int $numberOfInstances = 0;
 
@@ -30,7 +30,7 @@ class DSL::Entity::English::Geographics::ResourceAccess {
 
     submethod instance {
 
-        $instance = DSL::Entity::English::Geographics::ResourceAccess.bless unless $instance;
+        $instance = DSL::Entity::Geographics::ResourceAccess.bless unless $instance;
 
         if $numberOfInstances == 0 {
             $instance.make()

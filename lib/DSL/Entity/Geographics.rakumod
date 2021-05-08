@@ -1,36 +1,36 @@
 
 =begin pod
 
-=head1 DSL::Entity::English::Geographics
+=head1 DSL::Entity::Geographics
 
-C<DSL::Entity::English::Geographics> package has grammar and action classes for the parsing and
+C<DSL::Entity::Geographics> package has grammar and action classes for the parsing and
 interpretation of natural language commands that specify geographic locations.
 
 =head1 Synopsis
 
-    use DSL::Entity::English::Geographics;
+    use DSL::Entity::Geographics;
     my $rcode = ToGeographicEntityCode('Argentina');
 
 =end pod
 
-unit module DSL::Entity::English::Geographics;
+unit module DSL::Entity::Geographics;
 
 use DSL::Shared::Utilities::FuzzyMatching;
 use DSL::Shared::Utilities::MetaSpecsProcessing;
 
-use DSL::Entity::English::Geographics::Grammar;
-use DSL::Entity::English::Geographics::Actions::WL::Entity;
-use DSL::Entity::English::Geographics::Actions::WL::System;
+use DSL::Entity::Geographics::Grammar;
+use DSL::Entity::Geographics::Actions::WL::Entity;
+use DSL::Entity::Geographics::Actions::WL::System;
 
-use DSL::Entity::English::Geographics::Actions::Bulgarian::Standard;
+use DSL::Entity::Geographics::Actions::Bulgarian::Standard;
 
 #-----------------------------------------------------------
 my %targetToAction =
-    "Mathematica"      => DSL::Entity::English::Geographics::Actions::WL::System,
-    "WL"               => DSL::Entity::English::Geographics::Actions::WL::System,
-    "WL-System"        => DSL::Entity::English::Geographics::Actions::WL::System,
-    "WL-Entity"        => DSL::Entity::English::Geographics::Actions::WL::Entity,
-    "Bulgarian"        => DSL::Entity::English::Geographics::Actions::Bulgarian::Standard;
+    "Mathematica"      => DSL::Entity::Geographics::Actions::WL::System,
+    "WL"               => DSL::Entity::Geographics::Actions::WL::System,
+    "WL-System"        => DSL::Entity::Geographics::Actions::WL::System,
+    "WL-Entity"        => DSL::Entity::Geographics::Actions::WL::Entity,
+    "Bulgarian"        => DSL::Entity::Geographics::Actions::Bulgarian::Standard;
 
 my %targetToSeparator{Str} =
     "Julia"            => "\n",
@@ -54,7 +54,7 @@ multi ToGeographicEntityCode ( Str $command where not has-semicolon($command), S
 
     die 'Unknown target.' unless %targetToAction{$target}:exists;
 
-    my $match = DSL::Entity::English::Geographics::Grammar.parse($command.trim, actions => %targetToAction{$target} );
+    my $match = DSL::Entity::Geographics::Grammar.parse($command.trim, actions => %targetToAction{$target} );
     die 'Cannot parse the given command.' unless $match;
     return $match.made;
 }

@@ -1,7 +1,7 @@
 =begin comment
 #==============================================================================
 #
-#   Geographic Entities Bulgarian DSL actions in Raku (Perl 6)
+#   Georaphics entities grammar in Raku
 #   Copyright (C) 2021  Anton Antonov
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -23,26 +23,35 @@
 #
 #==============================================================================
 #
-#   For more details about Raku (Perl6) see https://raku.org/ .
+#   For more details about Raku see https://raku.org/ .
 #
 #==============================================================================
 =end comment
 
 use v6;
-use DSL::Entity::English::Geographics::Grammar;
 
-use DSL::Shared::Actions::English::WL::PipelineCommand;
-use DSL::Shared::Actions::CommonStructures;
+use DSL::Shared::Roles::PredicateSpecification;
+use DSL::Shared::Roles::ErrorHandling;
 
-unit module DSL::Entity::English::Geographics::Actions::Bulgarian::Standard;
+use DSL::Entity::Geographics::Grammar::EntityNames;
+use DSL::Entity::Geographics::Grammar::EntityAdjectives;
 
-class DSL::Entity::English::Geographics::Actions::Bulgarian::Standard
-        is DSL::Shared::Actions::CommonStructures {
-
-    # method TOP($/) { make $/.values[0].made; }
-
-    method TOP($/) {
-        make 'Not implemented.';
+grammar DSL::Entity::Geographics::Grammar
+        does DSL::Shared::Roles::ErrorHandling
+        does DSL::Entity::Geographics::Grammar::EntityNames
+        does DSL::Entity::Geographics::Grammar::EntityAdjectives {
+    # TOP
+    rule TOP {
+        <pipeline-command> |
+        <geographic-entity-command> |
+        <data-query-command>
     }
 
+    rule geographic-entity-command { <entity-country-adjective> || <entity-country-name> || <entity-region-adjective> || <entity-region-name> }
+
+    rule geographic-entity-type  { 'counties' | 'cities' | 'states' | 'people' }
+
+    rule data-query-command { [ 'how' 'many' | 'what' 'count' ] <geographic-entity-type> [ 'is' | 'are' ]? [ 'in' | 'at' ] <geographic-entity-command> }
+
 }
+

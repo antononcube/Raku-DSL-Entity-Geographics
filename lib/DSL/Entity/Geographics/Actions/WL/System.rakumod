@@ -1,7 +1,7 @@
 =begin comment
 #==============================================================================
 #
-#   Geographic Entities WL-Entity actions in Raku (Perl 6)
+#   Geographic Entities WL-System actions in Raku (Perl 6)
 #   Copyright (C) 2021  Anton Antonov
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -30,13 +30,13 @@
 
 use v6;
 
-use DSL::Entity::English::Geographics::Grammar;
+use DSL::Entity::Geographics::Grammar;
 use DSL::Shared::Actions::English::WL::PipelineCommand;
-use DSL::Entity::English::Geographics::ResourceAccess;
+use DSL::Entity::Geographics::ResourceAccess;
 
-my DSL::Entity::English::Geographics::ResourceAccess $resources.instance;
+my DSL::Entity::Geographics::ResourceAccess $resources.instance;
 
-class DSL::Entity::English::Geographics::Actions::WL::Entity
+class DSL::Entity::Geographics::Actions::WL::System
         is DSL::Shared::Actions::English::WL::PipelineCommand {
 
     ##========================================================
@@ -52,22 +52,22 @@ class DSL::Entity::English::Geographics::Actions::WL::Entity
     }
 
     method entity-country-name($/) {
-        my $nm = $resources.known-name('Country', $/.Str.lc, :!bool, :!warn);
-        make 'Entity["Country", "' ~ $nm.wordcase ~ '"]';
+        my $adj = $resources.known-name('Country', $/.Str.lc, :!bool, :!warn);
+        make '"' ~ $adj.wordcase ~ '"';
     }
 
     method entity-country-adjective($/) {
-        my $adj = $resources.known-adjective('Country', $/.Str.lc, :!bool, :!warn);
-        make 'Entity["Country", "' ~ $adj.wordcase ~ '"]';
+        my $adj =$resources.known-adjective('Country', $/.Str.lc, :!bool, :!warn);
+        make '"' ~ $adj.wordcase ~ '"';
     }
 
     method entity-region-name($/) {
-        my $nm = $resources.known-name('Region', $/.Str.lc, :!bool, :!warn);
-        make 'EntityClass["Country", "' ~ $nm.wordcase ~ '"]';
+        my $adj = $resources.known-name('Region', $/.Str.lc, :!bool, :!warn);
+        make '"' ~ $adj.wordcase ~ '"';
     }
 
     method entity-region-adjective($/) {
         my $adj = $resources.known-adjective('Region', $/.Str.lc, :!bool, :!warn);
-        make 'EntityClass["Country", "' ~ $adj.wordcase ~ '"]';
+        make '"' ~ $adj.wordcase ~ '"';
     }
 }

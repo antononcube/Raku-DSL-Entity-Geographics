@@ -1,11 +1,11 @@
 use lib './lib';
 use lib '.';
-use DSL::Entity::English::Geographics;
-use DSL::Entity::English::Geographics::ResourceAccess;
+use DSL::Entity::Geographics;
+use DSL::Entity::Geographics::ResourceAccess;
 
-#my DSL::Entity::English::Geographics::ResourceAccess $resource.instance;
+#my DSL::Entity::Geographics::ResourceAccess $resource.instance;
 #
-#my DSL::Entity::English::Geographics::ResourceAccess $resource2.instance;
+#my DSL::Entity::Geographics::ResourceAccess $resource2.instance;
 #
 #say 'Map with resources:', $resource.country-adjective-to-name("Chinese");
 #
@@ -15,7 +15,7 @@ use DSL::Entity::English::Geographics::ResourceAccess;
 #
 #say 'Number of resource objects:', $resource.getNumberOfInstances();
 
-my $pCOMMAND = DSL::Entity::English::Geographics::Grammar;
+my $pCOMMAND = DSL::Entity::Geographics::Grammar;
 
 #use Grammar::Tracer;
 

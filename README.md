@@ -17,14 +17,14 @@ Raku grammar classes for geographic entities (names.)
 
 ```shell
 zef install https://github.com/antononcube/Raku-DSL-Shared.git
-zef install https://github.com/antononcube/Raku-DSL-Entity-English-Geographics.git
+zef install https://github.com/antononcube/Raku-DSL-Entity-Geographics.git
 ```
 
 ## Examples
 
 ```perl6
-use DSL::Entity::English::Geographics::Grammar;
-my $pCOMMAND = DSL::Entity::English::Geographics::Grammar;
+use DSL::Entity::Geographics::Grammar;
+my $pCOMMAND = DSL::Entity::Geographics::Grammar;
 say $pCOMMAND.parse('Argentina', rule => 'geographic-entity-command');
 say $pCOMMAND.parse('United States of America, Illinois, Peoria', rule => 'geographic-entity-command');
 say $pCOMMAND.parse('United States, IL 60606', rule => 'geographic-entity-command');
@@ -38,11 +38,11 @@ say $pCOMMAND.parse('United States, IL 60606', rule => 'geographic-entity-comman
 [GitHub/antononcube](https://github.com/antononcube).
 
 [AAr2] Anton Antonov,
-[DSL::Entity::English::Jobs Raku package](https://github.com/antononcube/Raku-DSL-Entity-English-Jobs),
+[DSL::Entity::Jobs Raku package](https://github.com/antononcube/Raku-DSL-Entity-Jobs),
 (2021),
 [GitHub/antononcube](https://github.com/antononcube).
 
 [AAr3] Anton Antonov,
-[DSL::Entity::English::Foods Raku package](https://github.com/antononcube/Raku-DSL-Entity-English-Foods),
+[DSL::Entity::Foods Raku package](https://github.com/antononcube/Raku-DSL-Entity-Foods),
 (2021),
 [GitHub/antononcube](https://github.com/antononcube).

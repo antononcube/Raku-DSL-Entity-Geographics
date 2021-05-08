@@ -1,15 +1,15 @@
 use lib './lib';
 use lib '.';
-use DSL::Entity::English::Geographics;
+use DSL::Entity::Geographics;
 use Test;
 
 ##===========================================================
 ## Country names
 ##===========================================================
 
-my $pCOMMAND = DSL::Entity::English::Geographics::Grammar;
+my $pCOMMAND = DSL::Entity::Geographics::Grammar;
 
-my DSL::Entity::English::Geographics::ResourceAccess $resourceObj.instance;
+my DSL::Entity::Geographics::ResourceAccess $resourceObj.instance;
 
 plan 5;
 

@@ -1,7 +1,7 @@
 =begin comment
 #==============================================================================
 #
-#   Georaphics entities grammar in Raku
+#   Geographic Entities Bulgarian DSL actions in Raku (Perl 6)
 #   Copyright (C) 2021  Anton Antonov
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -23,35 +23,26 @@
 #
 #==============================================================================
 #
-#   For more details about Raku see https://raku.org/ .
+#   For more details about Raku (Perl6) see https://raku.org/ .
 #
 #==============================================================================
 =end comment
 
 use v6;
+use DSL::Entity::Geographics::Grammar;
 
-use DSL::Shared::Roles::PredicateSpecification;
-use DSL::Shared::Roles::ErrorHandling;
+use DSL::Shared::Actions::English::WL::PipelineCommand;
+use DSL::Shared::Actions::CommonStructures;
 
-use DSL::Entity::English::Geographics::Grammar::EntityNames;
-use DSL::Entity::English::Geographics::Grammar::EntityAdjectives;
+unit module DSL::Entity::Geographics::Actions::Bulgarian::Standard;
 
-grammar DSL::Entity::English::Geographics::Grammar
-        does DSL::Shared::Roles::ErrorHandling
-        does DSL::Entity::English::Geographics::Grammar::EntityNames
-        does DSL::Entity::English::Geographics::Grammar::EntityAdjectives {
-    # TOP
-    rule TOP {
-        <pipeline-command> |
-        <geographic-entity-command> |
-        <data-query-command>
+class DSL::Entity::Geographics::Actions::Bulgarian::Standard
+        is DSL::Shared::Actions::CommonStructures {
+
+    # method TOP($/) { make $/.values[0].made; }
+
+    method TOP($/) {
+        make 'Not implemented.';
     }
 
-    rule geographic-entity-command { <entity-country-adjective> || <entity-country-name> || <entity-region-adjective> || <entity-region-name> }
-
-    rule geographic-entity-type  { 'counties' | 'cities' | 'states' | 'people' }
-
-    rule data-query-command { [ 'how' 'many' | 'what' 'count' ] <geographic-entity-type> [ 'is' | 'are' ]? [ 'in' | 'at' ] <geographic-entity-command> }
-
 }
-
