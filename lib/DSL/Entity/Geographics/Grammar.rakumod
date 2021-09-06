@@ -34,12 +34,10 @@ use DSL::Shared::Roles::PredicateSpecification;
 use DSL::Shared::Roles::ErrorHandling;
 
 use DSL::Entity::Geographics::Grammar::EntityNames;
-use DSL::Entity::Geographics::Grammar::EntityAdjectives;
 
 grammar DSL::Entity::Geographics::Grammar
         does DSL::Shared::Roles::ErrorHandling
-        does DSL::Entity::Geographics::Grammar::EntityNames
-        does DSL::Entity::Geographics::Grammar::EntityAdjectives {
+        does DSL::Entity::Geographics::Grammar::EntityNames {
     # TOP
     rule TOP {
         <pipeline-command> |

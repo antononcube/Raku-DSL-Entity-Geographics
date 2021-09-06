@@ -13,7 +13,6 @@
     "DSL::Entity::Geographics": "lib/DSL/Entity/Geographics.rakumod",
     "DSL::Entity::Geographics::ResourceAccess": "lib/DSL/Entity/Geographics/ResourceAccess.rakumod",
     "DSL::Entity::Geographics::Grammar": "lib/DSL/Entity/Geographics/Grammar.rakumod",
-    "DSL::Entity::Geographics::Grammar::EntityAdjectives": "lib/DSL/Entity/Geographics/Grammar/EntityAdjectives.rakumod",
     "DSL::Entity::Geographics::Grammar::EntityNames": "lib/DSL/Entity/Geographics/Grammar/EntityNames.rakumod",
     "DSL::Entity::Geographics::Actions::Bulgarian::Standard": "lib/DSL/Entity/Geographics/Actions/Bulgarian/Standard.rakumod",
     "DSL::Entity::Geographics::Actions::WL::Entity": "lib/DSL/Entity/Geographics/Actions/WL/Entity.rakumod",

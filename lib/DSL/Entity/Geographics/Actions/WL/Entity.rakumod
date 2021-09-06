@@ -57,7 +57,7 @@ class DSL::Entity::Geographics::Actions::WL::Entity
     }
 
     method entity-country-adjective($/) {
-        my $adj = $resources.known-adjective('Country', $/.Str.lc, :!bool, :!warn);
+        my $adj = $resources.known-name('Country-Adjective', $/.Str.lc, :!bool, :!warn);
         make 'Entity["Country", "' ~ $adj.wordcase ~ '"]';
     }
 
@@ -67,7 +67,7 @@ class DSL::Entity::Geographics::Actions::WL::Entity
     }
 
     method entity-region-adjective($/) {
-        my $adj = $resources.known-adjective('Region', $/.Str.lc, :!bool, :!warn);
+        my $adj = $resources.known-name('Region-Adjective', $/.Str.lc, :!bool, :!warn);
         make 'EntityClass["Country", "' ~ $adj.wordcase ~ '"]';
     }
 }

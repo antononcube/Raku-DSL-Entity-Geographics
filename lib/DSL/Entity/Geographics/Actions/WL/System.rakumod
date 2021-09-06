@@ -33,10 +33,12 @@ use v6;
 use DSL::Entity::Geographics::Grammar;
 use DSL::Shared::Actions::English::WL::PipelineCommand;
 use DSL::Entity::Geographics::ResourceAccess;
+use DSL::Shared::Entity::Actions::WL::System;
 
 my DSL::Entity::Geographics::ResourceAccess $resources.instance;
 
 class DSL::Entity::Geographics::Actions::WL::System
+        is DSL::Shared::Entity::Actions::WL::System
         is DSL::Shared::Actions::English::WL::PipelineCommand {
 
     ##========================================================
@@ -57,7 +59,7 @@ class DSL::Entity::Geographics::Actions::WL::System
     }
 
     method entity-country-adjective($/) {
-        my $adj =$resources.known-adjective('Country', $/.Str.lc, :!bool, :!warn);
+        my $adj =$resources.known-name('Country-Adjective', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj.wordcase ~ '"';
     }
 
@@ -67,7 +69,7 @@ class DSL::Entity::Geographics::Actions::WL::System
     }
 
     method entity-region-adjective($/) {
-        my $adj = $resources.known-adjective('Region', $/.Str.lc, :!bool, :!warn);
+        my $adj = $resources.known-name('Region-Adjective', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj.wordcase ~ '"';
     }
 }
