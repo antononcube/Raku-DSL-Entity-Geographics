@@ -19,8 +19,8 @@ ok $pCOMMAND.parse('American', rule => 'geographic-entity-command'), 'American';
 
 ok $pCOMMAND.parse('Asian', rule => 'geographic-entity-command'), 'Asian';
 
-like $resourceObj.adjective-to-entity-id('Region', 'Asian'), / 'Asia' / ;
+like $resourceObj.name-to-entity-id('Region-Adjective', 'Asian'), / 'Asia' / ;
 
-like $resourceObj.adjective-to-entity-id('Region', 'African'), / 'Africa' /;
+like $resourceObj.name-to-entity-id('Region-Adjective', 'African'), / 'Africa' /;
 
 done-testing;
