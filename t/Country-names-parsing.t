@@ -9,7 +9,9 @@ use Test;
 
 my $pCOMMAND = DSL::Entity::Geographics::Grammar;
 
-my DSL::Entity::Geographics::ResourceAccess $resourceObj.instance;
+$pCOMMAND.set-resources(get-entity-resources-access-object());
+
+my $resourceObj = get-entity-resources-access-object();
 
 plan 7;
 
