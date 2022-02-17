@@ -15,8 +15,7 @@ interpretation of natural language commands that specify geographic locations.
 
 unit module DSL::Entity::Geographics;
 
-use DSL::Shared::Utilities::FuzzyMatching;
-use DSL::Shared::Utilities::MetaSpecsProcessing;
+use DSL::Shared::Utilities::CommandProcessing;
 
 use DSL::Entity::Geographics::Grammar;
 use DSL::Entity::Geographics::Actions::WL::Entity;
@@ -32,48 +31,41 @@ my %targetToAction =
     "WL-Entity"        => DSL::Entity::Geographics::Actions::WL::Entity,
     "Bulgarian"        => DSL::Entity::Geographics::Actions::Bulgarian::Standard;
 
-my %targetToSeparator{Str} =
-    "Julia"            => "\n",
-    "Julia-DataFrames" => "\n",
-    "R"                => " ;\n",
-    "Mathematica"      => "\n",
-    "WL"               => ";\n",
-    "WL-System"        => ";\n",
-    "WL-Entity"        => ";\n",
-    "Bulgarian"        => "\n";
+
+my %targetToAction2{Str} = %targetToAction.grep({ $_.key.contains('-') }).map({ $_.key.subst('-', '::').Str => $_.value }).Hash;
+%targetToAction = |%targetToAction , |%targetToAction2;
+
+#| Target to separators rules
+my Str %targetToSeparator{Str} = DSL::Shared::Utilities::CommandProcessing::target-separator-rules();
 
 #-----------------------------------------------------------
-sub has-semicolon (Str $word) {
-    return defined index $word, ';';
+my DSL::Entity::Geographics::ResourceAccess $resourceObj;
+
+#| Get the resources access object.
+our sub get-entity-resources-access-object() is export { return $resourceObj; }
+
+#-----------------------------------------------------------
+#| Named entity recognition for metadata. (proto)
+proto ToGeographicEntityCode(Str $command, Str $target = 'WL-System', | ) is export {*}
+
+#| Named entity recognition for metadata
+multi ToGeographicEntityCode( Str $command, Str $target = 'WL-System', *%args ) {
+
+    my $pCOMMAND = DSL::Entity::Geographics::Grammar;
+    $pCOMMAND.set-resources(get-entity-resources-access-object());
+
+    my $ACTOBJ = %targetToAction{$target}.new(resources => get-entity-resources-access-object());
+
+    DSL::Shared::Utilities::CommandProcessing::ToWorkflowCode( $command,
+                                                               grammar => $pCOMMAND,
+                                                               actions => $ACTOBJ,
+                                                               separator => %targetToSeparator{$target},
+                                                               |%args )
 }
 
 #-----------------------------------------------------------
-proto ToGeographicEntityCode(Str $command, Str $target = 'tidyverse' ) is export {*}
-
-multi ToGeographicEntityCode ( Str $command where not has-semicolon($command), Str $target = 'WL' ) {
-
-    die 'Unknown target.' unless %targetToAction{$target}:exists;
-
-    my $match = DSL::Entity::Geographics::Grammar.parse($command.trim, actions => %targetToAction{$target} );
-    die 'Cannot parse the given command.' unless $match;
-    return $match.made;
-}
-
-multi ToGeographicEntityCode ( Str $command where has-semicolon($command), Str $target = 'WL' ) {
-
-    my $specTarget = get-dsl-spec( $command, 'target');
-
-    $specTarget = $specTarget ?? $specTarget<DSLTARGET> !! $target;
-
-    die 'Unknown target.' unless %targetToAction{$specTarget}:exists;
-
-    my @commandLines = $command.trim.split(/ ';' \s* /);
-
-    @commandLines = grep { $_.Str.chars > 0 }, @commandLines;
-
-    my @cmdLines = map { ToGeographicEntityCode($_, $specTarget) }, @commandLines;
-
-    @cmdLines = grep { $_.^name eq 'Str' }, @cmdLines;
-
-    return @cmdLines.join( %targetToSeparator{$specTarget} ).trim;
+$resourceObj := BEGIN {
+    my DSL::Entity::Geographics::ResourceAccess $obj .= new;
+    $obj.ingest-resource-files();
+    $obj
 }

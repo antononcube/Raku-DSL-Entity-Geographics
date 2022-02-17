@@ -28,16 +28,19 @@
 #==============================================================================
 =end comment
 
-use v6;
-
-use DSL::Shared::Roles::PredicateSpecification;
 use DSL::Shared::Roles::ErrorHandling;
-
+use DSL::Entity::Geographics::ResourceAccess;
 use DSL::Entity::Geographics::Grammar::EntityNames;
 
 grammar DSL::Entity::Geographics::Grammar
         does DSL::Shared::Roles::ErrorHandling
         does DSL::Entity::Geographics::Grammar::EntityNames {
+
+    my DSL::Entity::Geographics::ResourceAccess $resources;
+
+    method get-resources(--> DSL::Entity::Geographics::ResourceAccess) { return $resources; }
+    method set-resources(DSL::Entity::Geographics::ResourceAccess $obj) { $resources = $obj; }
+
     # TOP
     rule TOP {
         <pipeline-command> |

@@ -1,10 +1,5 @@
-use v6;
-
 use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Utilities::FuzzyMatching;
-use DSL::Entity::Geographics::ResourceAccess;
-
-my DSL::Entity::Geographics::ResourceAccess $resources.instance;
 
 role DSL::Entity::Geographics::Grammar::CountryNames
         does DSL::Shared::Roles::English::PipelineCommand {
@@ -14,6 +9,6 @@ role DSL::Entity::Geographics::Grammar::CountryNames
     }
 
     regex country-name-known {
-        ( <word-value>+ % \h+ ) <?{ $resources.known-country-name($0.Str.lc) }>
+        ( <word-value>+ % \h+ ) <?{ self.get-resources.known-country-name($0.Str.lc) }>
     }
 }

@@ -17,6 +17,8 @@ use DSL::Entity::Geographics::ResourceAccess;
 
 my $pCOMMAND = DSL::Entity::Geographics::Grammar;
 
+$pCOMMAND.set-resources(get-entity-resources-access-object());
+
 #use Grammar::Tracer;
 
 say $pCOMMAND.parse('Argentina country', rule => 'geographic-entity-command');
@@ -37,7 +39,7 @@ my @testCommands = (
 );
 
 
-my @targets = ('WL-Entity');
+my @targets = ('WL-Entity', 'Bulgarian');
 
 for @testCommands -> $c {
     say "=" x 30;

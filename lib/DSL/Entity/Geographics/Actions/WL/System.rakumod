@@ -35,11 +35,12 @@ use DSL::Shared::Actions::English::WL::PipelineCommand;
 use DSL::Entity::Geographics::ResourceAccess;
 use DSL::Shared::Entity::Actions::WL::System;
 
-my DSL::Entity::Geographics::ResourceAccess $resources.instance;
 
 class DSL::Entity::Geographics::Actions::WL::System
         is DSL::Shared::Entity::Actions::WL::System
         is DSL::Shared::Actions::English::WL::PipelineCommand {
+
+    has DSL::Entity::Geographics::ResourceAccess $.resources;
 
     ##========================================================
     ## Grammar methods
@@ -54,22 +55,22 @@ class DSL::Entity::Geographics::Actions::WL::System
     }
 
     method entity-country-name($/) {
-        my $adj = $resources.known-name('Country', $/.Str.lc, :!bool, :!warn);
+        my $adj = $!resources.known-name('Country', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj.wordcase ~ '"';
     }
 
     method entity-country-adjective($/) {
-        my $adj =$resources.known-name('Country-Adjective', $/.Str.lc, :!bool, :!warn);
+        my $adj =$!resources.known-name('Country-Adjective', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj.wordcase ~ '"';
     }
 
     method entity-region-name($/) {
-        my $adj = $resources.known-name('Region', $/.Str.lc, :!bool, :!warn);
+        my $adj = $!resources.known-name('Region', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj.wordcase ~ '"';
     }
 
     method entity-region-adjective($/) {
-        my $adj = $resources.known-name('Region-Adjective', $/.Str.lc, :!bool, :!warn);
+        my $adj = $!resources.known-name('Region-Adjective', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj.wordcase ~ '"';
     }
 }
