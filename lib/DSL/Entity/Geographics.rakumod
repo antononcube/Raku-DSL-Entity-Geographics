@@ -42,7 +42,7 @@ my Str %targetToSeparator{Str} = DSL::Shared::Utilities::CommandProcessing::targ
 my DSL::Entity::Geographics::ResourceAccess $resourceObj;
 
 #| Get the resources access object.
-our sub get-entity-resources-access-object() is export { return $resourceObj; }
+our sub resource-access-object(--> DSL::Entity::Geographics::ResourceAccess)  { return $resourceObj; }
 
 #-----------------------------------------------------------
 #| Named entity recognition for metadata. (proto)
@@ -52,9 +52,9 @@ proto ToGeographicEntityCode(Str $command, Str $target = 'WL-System', | ) is exp
 multi ToGeographicEntityCode( Str $command, Str $target = 'WL-System', *%args ) {
 
     my $pCOMMAND = DSL::Entity::Geographics::Grammar;
-    $pCOMMAND.set-resources(get-entity-resources-access-object());
+    $pCOMMAND.set-resources(DSL::Entity::Geographics::resource-access-object());
 
-    my $ACTOBJ = %targetToAction{$target}.new(resources => get-entity-resources-access-object());
+    my $ACTOBJ = %targetToAction{$target}.new(resources => DSL::Entity::Geographics::resource-access-object());
 
     DSL::Shared::Utilities::CommandProcessing::ToWorkflowCode( $command,
                                                                grammar => $pCOMMAND,

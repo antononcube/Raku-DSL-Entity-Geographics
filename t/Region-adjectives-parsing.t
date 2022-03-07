@@ -1,5 +1,4 @@
-use lib './lib';
-use lib '.';
+
 use DSL::Entity::Geographics;
 use Test;
 
@@ -9,9 +8,9 @@ use Test;
 
 my $pCOMMAND = DSL::Entity::Geographics::Grammar;
 
-$pCOMMAND.set-resources(get-entity-resources-access-object());
+$pCOMMAND.set-resources(DSL::Entity::Geographics::resource-access-object());
 
-my $resourceObj = get-entity-resources-access-object();
+my $resourceObj = DSL::Entity::Geographics::resource-access-object();
 
 plan 5;
 

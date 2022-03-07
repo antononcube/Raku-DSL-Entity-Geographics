@@ -17,7 +17,7 @@ use DSL::Entity::Geographics::ResourceAccess;
 
 my $pCOMMAND = DSL::Entity::Geographics::Grammar;
 
-$pCOMMAND.set-resources(get-entity-resources-access-object());
+$pCOMMAND.set-resources(DSL::Entity::Geographics::resource-access-object());
 
 #use Grammar::Tracer;
 
