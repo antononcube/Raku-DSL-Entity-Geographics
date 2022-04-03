@@ -54,23 +54,47 @@ class DSL::Entity::Geographics::Actions::WL::System
         make $/.values[0].made;
     }
 
-    method entity-country-name($/) {
-        my $adj = $!resources.known-name('Country', $/.Str.lc, :!bool, :!warn);
+    #------------------------------------------------------
+    method entity-country-name:sym<English>($/) {
+        my $adj = $!resources.name-to-entity-id('Country', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj.wordcase ~ '"';
     }
 
-    method entity-country-adjective($/) {
-        my $adj =$!resources.known-name('Country-Adjective', $/.Str.lc, :!bool, :!warn);
+    method entity-country-name:sym<Bulgarian>($/) {
+        my $adj = $!resources.name-to-entity-id('Country-Bulgarian', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj.wordcase ~ '"';
     }
 
-    method entity-region-name($/) {
-        my $adj = $!resources.known-name('Region', $/.Str.lc, :!bool, :!warn);
+    #------------------------------------------------------
+    method entity-country-adjective:sym<English>($/) {
+        my $adj = $!resources.name-to-entity-id('Country-Adjective', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj.wordcase ~ '"';
     }
 
-    method entity-region-adjective($/) {
-        my $adj = $!resources.known-name('Region-Adjective', $/.Str.lc, :!bool, :!warn);
+    method entity-country-adjective:sym<Bulgarian>($/) {
+        my $adj = $!resources.name-to-entity-id('Country-Adjective-Bulgarian', $/.Str.lc, :!bool, :!warn);
+        make '"' ~ $adj.wordcase ~ '"';
+    }
+
+    #------------------------------------------------------
+    method entity-region-name:sym<English>($/) {
+        my $adj = $!resources.name-to-entity-id('Region', $/.Str.lc, :!bool, :!warn);
+        make '"' ~ $adj.wordcase ~ '"';
+    }
+
+    method entity-region-name:sym<Bulgarian>($/) {
+        my $adj = $!resources.name-to-entity-id('Region-Bulgarian', $/.Str.lc, :!bool, :!warn);
+        make '"' ~ $adj.wordcase ~ '"';
+    }
+
+    #------------------------------------------------------
+    method entity-region-adjective:sym<English>($/) {
+        my $adj = $!resources.name-to-entity-id('Region-Adjective', $/.Str.lc, :!bool, :!warn);
+        make '"' ~ $adj.wordcase ~ '"';
+    }
+
+    method entity-region-adjective:sym<Bulgarian>($/) {
+        my $adj = $!resources.name-to-entity-id('Region-Adjective-Bulgarian', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj.wordcase ~ '"';
     }
 }
