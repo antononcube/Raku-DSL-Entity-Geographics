@@ -1,34 +1,37 @@
 {
-  "perl": "6.d",
   "name": "DSL::Entity::Geographics",
-  "api": "1",
-  "auth": "github:antononcube",
-  "version": "0.1.0",
   "description": "Grammars for geographic entities: countries, states, cities, ZIP codes, etc.",
+  "version": "0.1.0",
+  "perl": "6.d",
   "authors": [
     "Anton Antonov"
   ],
-  "license": "Artistic-2.0",
-  "provides": {
-    "DSL::Entity::Geographics": "lib/DSL/Entity/Geographics.rakumod",
-    "DSL::Entity::Geographics::ResourceAccess": "lib/DSL/Entity/Geographics/ResourceAccess.rakumod",
-    "DSL::Entity::Geographics::Grammar": "lib/DSL/Entity/Geographics/Grammar.rakumod",
-    "DSL::Entity::Geographics::Grammar::EntityNames": "lib/DSL/Entity/Geographics/Grammar/EntityNames.rakumod",
-    "DSL::Entity::Geographics::Actions::Bulgarian::Standard": "lib/DSL/Entity/Geographics/Actions/Bulgarian/Standard.rakumod",
-    "DSL::Entity::Geographics::Actions::WL::Entity": "lib/DSL/Entity/Geographics/Actions/WL/Entity.rakumod",
-    "DSL::Entity::Geographics::Actions::WL::System": "lib/DSL/Entity/Geographics/Actions/WL/System.rakumod"
-  },
+  "auth": "github:antononcube",
   "depends": [
     "DSL::Shared"
   ],
   "build-depends": [],
   "test-depends": [],
+  "provides": {
+    "DSL::Entity::Geographics": "lib/DSL/Entity/Geographics.rakumod",
+    "DSL::Entity::Geographics::Actions::Bulgarian::Standard": "lib/DSL/Entity/Geographics/Actions/Bulgarian/Standard.rakumod",
+    "DSL::Entity::Geographics::Actions::WL::Entity": "lib/DSL/Entity/Geographics/Actions/WL/Entity.rakumod",
+    "DSL::Entity::Geographics::Actions::WL::System": "lib/DSL/Entity/Geographics/Actions/WL/System.rakumod",
+    "DSL::Entity::Geographics::Grammar": "lib/DSL/Entity/Geographics/Grammar.rakumod",
+    "DSL::Entity::Geographics::Grammar::EntityNames": "lib/DSL/Entity/Geographics/Grammar/EntityNames.rakumod",
+    "DSL::Entity::Geographics::ResourceAccess": "lib/DSL/Entity/Geographics/ResourceAccess.rakumod"
+  },
   "resources": [
-    "CountryNameToEntityID_EN.csv",
+    "CountryAdjectiveToEntityID_BG.csv",
     "CountryAdjectiveToEntityID_EN.csv",
+    "CountryNameToEntityID_BG.csv",
+    "CountryNameToEntityID_EN.csv",
+    "RegionAdjectiveToEntityID_EN.csv",
+    "RegionAdjectiveToEntityID_BG.csv",
     "RegionNameToEntityID_EN.csv",
-    "RegionAdjectiveToEntityID_EN.csv"
+    "RegionNameToEntityID_BG.csv"
   ],
+  "license": "Artistic-2.0",
   "tags": [
     "city",
     "country",
@@ -39,5 +42,6 @@
     "interpreter",
     "ner"
   ],
+  "api": "1",
   "source-url": "https://github.com/antononcube/Raku-DSL-Entity-Geographics.git"
 }
