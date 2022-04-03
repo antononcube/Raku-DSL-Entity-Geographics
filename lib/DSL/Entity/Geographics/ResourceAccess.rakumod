@@ -28,7 +28,6 @@ class DSL::Entity::Geographics::ResourceAccess
 
         # Combine
         %resources = %resources , %resources-bg;
-        say %resources;
         return %resources;
     }
 
