@@ -25,9 +25,6 @@ use DSL::Entity::Geographics;
 
 ToGeographicEntityCode('Brazilian');
 ```
-```
-# "Brazil"
-```
 
 ### Grammar parsing
 
@@ -40,25 +37,9 @@ $pCOMMAND.set-resources(DSL::Entity::Geographics::resource-access-object());
 
 say $pCOMMAND.parse('Argentina', rule => 'geographic-entity-command');
 ```
-```
-#ERROR: Possible misspelling of 'argentine' as 'argentina'.
-# ｢Argentina｣
-#  entity-country-adjective => ｢Argentina｣
-#   0 => ｢Argentina｣
-#    word-value => ｢Argentina｣
-```
 
 ```perl6
 say $pCOMMAND.parse('United States of America', rule => 'geographic-entity-command');
-```
-```
-# ｢United States of America｣
-#  entity-country-name => ｢United States of America｣
-#   0 => ｢United States of America｣
-#    word-value => ｢United｣
-#    word-value => ｢States｣
-#    word-value => ｢of｣
-#    word-value => ｢America｣
 ```
 
 ## References

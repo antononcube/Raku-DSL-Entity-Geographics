@@ -19,9 +19,13 @@ my $pCOMMAND = DSL::Entity::Geographics::Grammar;
 
 $pCOMMAND.set-resources(DSL::Entity::Geographics::resource-access-object());
 
+say DSL::Entity::Geographics::resource-access-object().getNameToEntityID()<Country>.values.pick(12).raku;
+say DSL::Entity::Geographics::resource-access-object().getNameToEntityID()<Country-Adjective>.values.pick(12).raku;
+
 #use Grammar::Tracer;
 
-say $pCOMMAND.parse('Argentina country', rule => 'geographic-entity-command');
+say $pCOMMAND.parse('Argentina', rule => 'geographic-entity-command');
+say $pCOMMAND.parse('Аржентина', rule => 'geographic-entity-command');
 #
 #say $pCOMMAND.parse('Bulgarian', rule => 'geographic-entity-command');
 #
@@ -35,11 +39,14 @@ say "=" x 60;
 
 my @testCommands = (
 'Argentina',
-'Mediterranian'
+'Mediterranian',
+'Средиземноморски',
+'Арджентина',
+'Гръцки'
 );
 
 
-my @targets = ('WL-Entity', 'Bulgarian');
+my @targets = ('WL-System');
 
 for @testCommands -> $c {
     say "=" x 30;
@@ -50,6 +57,7 @@ for @testCommands -> $c {
         say '-' x 30;
         my $start = now;
         my $res = ToGeographicEntityCode($c, $t);
+        say "Result: $res";
         say "time:", now - $start;
         say $res;
     }
