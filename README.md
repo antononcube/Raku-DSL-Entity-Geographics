@@ -18,7 +18,9 @@ zef install https://github.com/antononcube/Raku-DSL-Entity-Geographics.git
 
 ## Examples
 
-### 
+### Basic entity name retrieval
+
+Here we show how the entity ID is retrieved using an adjective:
 
 ```perl6
 use DSL::Entity::Geographics;
@@ -30,6 +32,11 @@ ToGeographicEntityCode('Brazilian');
 ```
 
 ### Grammar parsing
+
+One of the main motivations for this package is to be able to use known country names and related adjectives
+as grammar tokens. For example, in packages like ["DSL::English::FoodPreparationWorkflows"](https://github.com/antononcube/Raku-DSL-English-FoodPreparationWorkflows), [AAp4].
+
+Here are few grammar parsing examples:
 
 ```perl6
 use DSL::Entity::Geographics::Grammar;
@@ -63,17 +70,22 @@ say $pCOMMAND.parse('United States of America', rule => 'geographic-entity-comma
 
 ## References
 
-[AAr1] Anton Antonov,
+[AAp1] Anton Antonov,
 [DSL::Shared Raku package](https://github.com/antononcube/Raku-DSL-Shared),
 (2020),
 [GitHub/antononcube](https://github.com/antononcube).
 
-[AAr2] Anton Antonov,
+[AAp2] Anton Antonov,
 [DSL::Entity::Jobs Raku package](https://github.com/antononcube/Raku-DSL-Entity-Jobs),
 (2021),
 [GitHub/antononcube](https://github.com/antononcube).
 
-[AAr3] Anton Antonov,
+[AAp3] Anton Antonov,
 [DSL::Entity::Foods Raku package](https://github.com/antononcube/Raku-DSL-Entity-Foods),
+(2021),
+[GitHub/antononcube](https://github.com/antononcube).
+
+[AAp4] Anton Antonov,
+[DSL::English::FoodPreparationWorkflows Raku package](https://github.com/antononcube/Raku-DSL-English-FoodPreparationWorkflows),
 (2021),
 [GitHub/antononcube](https://github.com/antononcube).
