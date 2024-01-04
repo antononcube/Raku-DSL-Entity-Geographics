@@ -1,7 +1,7 @@
 {
   "name": "DSL::Entity::Geographics",
   "description": "Grammars for geographic entities: countries, states, cities, ZIP codes, etc.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "perl": "6.d",
   "authors": [
     "Anton Antonov"
@@ -22,6 +22,7 @@
     "DSL::Entity::Geographics::ResourceAccess": "lib/DSL/Entity/Geographics/ResourceAccess.rakumod"
   },
   "resources": [
+    "CityNameToEntityID_BG.csv",
     "CityNameToEntityID_EN.csv",
     "CountryAdjectiveToEntityID_BG.csv",
     "CountryAdjectiveToEntityID_EN.csv",
