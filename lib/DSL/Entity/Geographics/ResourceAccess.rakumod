@@ -16,19 +16,19 @@ class DSL::Entity::Geographics::ResourceAccess
         # English
         my @fileNames = <City State Country Region>;
         my %fileNames1 = @fileNames.map({ $_ => $_ ~ 'NameToEntityID_EN.csv' });
-        my %fileNames2 = @fileNames.map({ $_ ~ '-Adjective' => $_ ~ 'AdjectiveToEntityID_EN.csv' });
+        my %fileNames2 = @fileNames.grep(* ~~ /Country | Region/).map({ $_ ~ '-Adjective' => $_ ~ 'AdjectiveToEntityID_EN.csv' });
         my %resources = %fileNames1 , %fileNames2;
         %resources = %resources.map({ $_.key => %?RESOURCES{$_.value} });
 
         # Bulgarian
         %fileNames1 = @fileNames.map({ $_ => $_ ~ 'NameToEntityID_BG.csv' });
-        %fileNames2 = @fileNames.map({ $_ ~ '-Adjective' => $_ ~ 'AdjectiveToEntityID_BG.csv' });
+        %fileNames2 = @fileNames.grep(* ~~ /Country | Region/).map({ $_ ~ '-Adjective' => $_ ~ 'AdjectiveToEntityID_BG.csv' });
         my %resources-bg = %fileNames1 , %fileNames2;
         %resources-bg = %resources-bg.map({ $_.key ~ '-Bulgarian' => %?RESOURCES{$_.value} });
 
         # Combine
         %resources = %resources , %resources-bg;
-        %resources = %resources.grep(*.defined);
+
         return %resources;
     }
 
