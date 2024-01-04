@@ -48,7 +48,7 @@ grammar DSL::Entity::Geographics::Grammar
         <data-query-command>
     }
 
-    rule geographic-entity-command { <entity-country-adjective> || <entity-country-name> || <entity-region-adjective> || <entity-region-name> }
+    rule geographic-entity-command { <entity-country-adjective> || <entity-country-name> || <entity-region-adjective> || <entity-region-name> || <entity-state-name> || <entity-city-name>}
 
     rule geographic-entity-type  { 'counties' | 'cities' | 'states' | 'people' }
 

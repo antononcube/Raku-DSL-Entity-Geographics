@@ -22,14 +22,17 @@
     "DSL::Entity::Geographics::ResourceAccess": "lib/DSL/Entity/Geographics/ResourceAccess.rakumod"
   },
   "resources": [
+    "CityNameToEntityID_EN.csv",
     "CountryAdjectiveToEntityID_BG.csv",
     "CountryAdjectiveToEntityID_EN.csv",
     "CountryNameToEntityID_BG.csv",
     "CountryNameToEntityID_EN.csv",
-    "RegionAdjectiveToEntityID_EN.csv",
     "RegionAdjectiveToEntityID_BG.csv",
+    "RegionAdjectiveToEntityID_EN.csv",
+    "RegionNameToEntityID_BG.csv",
     "RegionNameToEntityID_EN.csv",
-    "RegionNameToEntityID_BG.csv"
+    "StateNameToEntityID_BG.csv",
+    "StateNameToEntityID_EN.csv"
   ],
   "license": "Artistic-2.0",
   "tags": [

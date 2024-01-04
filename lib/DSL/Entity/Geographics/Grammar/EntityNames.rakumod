@@ -50,4 +50,26 @@ role DSL::Entity::Geographics::Grammar::EntityNames
         ( <word-value>+ % \h+ ) <?{ self.get-resources().known-name('Region-Bulgarian', $0.Str.lc) }>
     }
 
+    #------------------------------------------------------
+    proto regex entity-state-name {*}
+
+    regex entity-state-name:sym<English> {
+        ( <word-value>+ % \h+ ) <?{ self.get-resources().known-name('State', $0.Str.lc) }>
+    }
+
+    regex entity-state-name:sym<Bulgarian> {
+        ( <word-value>+ % \h+ ) <?{ self.get-resources().known-name('State-Bulgarian', $0.Str.lc) }>
+    }
+
+    #------------------------------------------------------
+    proto regex entity-city-name {*}
+
+    regex entity-city-name:sym<English> {
+        ( <word-value>+ % \h+ ) <?{ self.get-resources().known-name('City', $0.Str.lc) }>
+    }
+
+    regex entity-city-name:sym<Bulgarian> {
+        ( <word-value>+ % \h+ ) <?{ self.get-resources().known-name('City-Bulgarian', $0.Str.lc) }>
+    }
+
 }

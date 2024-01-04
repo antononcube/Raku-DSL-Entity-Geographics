@@ -97,4 +97,26 @@ class DSL::Entity::Geographics::Actions::WL::System
         my $adj = $!resources.name-to-entity-id('Region-Adjective-Bulgarian', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj.wordcase ~ '"';
     }
+
+    #------------------------------------------------------
+    method entity-state-name:sym<English>($/) {
+        my $adj = $!resources.name-to-entity-id('State', $/.Str.lc, :!bool, :!warn);
+        make '"' ~ $adj ~ '"';
+    }
+
+    method entity-state-name:sym<Bulgarian>($/) {
+        my $adj = $!resources.name-to-entity-id('State-Bulgarian', $/.Str.lc, :!bool, :!warn);
+        make '"' ~ $adj ~ '"';
+    }
+
+    #------------------------------------------------------
+    method entity-city-name:sym<English>($/) {
+        my $adj = $!resources.name-to-entity-id('City', $/.Str.lc, :!bool, :!warn);
+        make '"' ~ $adj ~ '"';
+    }
+
+    method entity-city-name:sym<Bulgarian>($/) {
+        my $adj = $!resources.name-to-entity-id('City-Bulgarian', $/.Str.lc, :!bool, :!warn);
+        make '"' ~ $adj ~ '"';
+    }
 }

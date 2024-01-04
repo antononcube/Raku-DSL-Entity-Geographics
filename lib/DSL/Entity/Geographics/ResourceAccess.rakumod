@@ -14,7 +14,7 @@ class DSL::Entity::Geographics::ResourceAccess
     method get-resource-files( --> Hash) {
 
         # English
-        my @fileNames = <Country Region>;
+        my @fileNames = <City State Country Region>;
         my %fileNames1 = @fileNames.map({ $_ => $_ ~ 'NameToEntityID_EN.csv' });
         my %fileNames2 = @fileNames.map({ $_ ~ '-Adjective' => $_ ~ 'AdjectiveToEntityID_EN.csv' });
         my %resources = %fileNames1 , %fileNames2;
@@ -28,6 +28,7 @@ class DSL::Entity::Geographics::ResourceAccess
 
         # Combine
         %resources = %resources , %resources-bg;
+        %resources = %resources.grep(*.defined);
         return %resources;
     }
 

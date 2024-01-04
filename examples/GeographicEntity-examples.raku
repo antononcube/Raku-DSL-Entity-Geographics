@@ -1,5 +1,6 @@
-use lib './lib';
+
 use lib '.';
+
 use DSL::Entity::Geographics;
 use DSL::Entity::Geographics::ResourceAccess;
 
@@ -42,7 +43,11 @@ my @testCommands = (
 'Mediterranian',
 'Средиземноморски',
 'Арджентина',
-'Гръцки'
+'Гръцки',
+'Alabama',
+'New Hampshire',
+'Fort Lauderdale',
+'Пенсилвания'
 );
 
 
