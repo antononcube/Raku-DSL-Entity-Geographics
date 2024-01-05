@@ -111,6 +111,9 @@ class DSL::Entity::Geographics::Actions::WL::System
 
     #------------------------------------------------------
     method entity-city-name:sym<English>($/) {
+        # There should be name clashes.
+        # Selection has to be done based on city population.
+        # (That data is not included in this package yet.)
         my $adj = $!resources.name-to-entity-id('City', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj ~ '"';
     }
@@ -118,5 +121,23 @@ class DSL::Entity::Geographics::Actions::WL::System
     method entity-city-name:sym<Bulgarian>($/) {
         my $adj = $!resources.name-to-entity-id('City-Bulgarian', $/.Str.lc, :!bool, :!warn);
         make '"' ~ $adj ~ '"';
+    }
+
+    #------------------------------------------------------
+    method entity-city-and-state-name($/) {
+        # We have to make sure that the state-name-and-city-name key exists.
+        # TBF...
+        if $<entity-city-name>.made.contains($<entity-state-name>.made.subst('"'):g) {
+            make $<entity-city-name>.made;
+        } else {
+            # Here we assume that the IDs are in the form <country>-<state>-<city>
+            my $key = $<entity-state-name>.made ~ $<entity-city-name>.split('-').tail;
+
+            if $key ∈ $!resources.getNameToEntityID()<City>.values {
+                make $key;
+            } else {
+                make 'NONE';
+            }
+        }
     }
 }
