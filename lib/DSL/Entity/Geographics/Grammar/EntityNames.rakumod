@@ -72,4 +72,6 @@ role DSL::Entity::Geographics::Grammar::EntityNames
         ( <word-value>+ % \h+ ) <?{ self.get-resources().known-name('City-Bulgarian', $0.Str.lc) }>
     }
 
+    #------------------------------------------------------
+    regex entity-city-and-state-name { <entity-city-name> [\s*','?\s*] <entity-state-name> }
 }
