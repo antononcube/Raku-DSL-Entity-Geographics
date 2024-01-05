@@ -33,7 +33,8 @@
     "RegionNameToEntityID_BG.csv",
     "RegionNameToEntityID_EN.csv",
     "StateNameToEntityID_BG.csv",
-    "StateNameToEntityID_EN.csv"
+    "StateNameToEntityID_EN.csv",
+    "CountryStateCity_EN.json"
   ],
   "license": "Artistic-2.0",
   "tags": [

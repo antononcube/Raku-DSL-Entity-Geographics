@@ -4,6 +4,9 @@ use DSL::Shared::Entity::ResourceAccess;
 
 class DSL::Entity::Geographics::ResourceAccess
         is DSL::Shared::Entity::ResourceAccess {
+
+    my %.countryStateCity;
+
     #-----------------------------------------------------------
     # OVERRIDE-START
     #-----------------------------------------------------------
@@ -28,6 +31,8 @@ class DSL::Entity::Geographics::ResourceAccess
 
         # Combine
         %resources = %resources , %resources-bg;
+
+        self.countryStateCity = from-json(slurp(%?RESOURCES<CountryStateCity_EN.json>));
 
         return %resources;
     }

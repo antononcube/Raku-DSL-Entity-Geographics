@@ -133,8 +133,11 @@ class DSL::Entity::Geographics::Actions::WL::System
             # Here we assume that the IDs are in the form <country>-<state>-<city>
             my $key = $<entity-state-name>.made ~ $<entity-city-name>.split('-').tail;
 
-            if $key ∈ $!resources.getNameToEntityID()<City>.values {
-                make $key;
+            my $state = $<entity-state-name>.made.split('-').tail.trans(['"', '_'] => ['', ' ']);
+            my $city = $<entity-city-name>.made.split('-').tail.trans(['"', '_'] => ['', ' ']);
+
+            if $!resources.countryStateCity{'UnitedStates'; $state ; $city } {
+                make "UnitedStates-{$state.subst(' ', '_'):g}-{$city.subst(' ', '_'):g}";
             } else {
                 make 'NONE';
             }
