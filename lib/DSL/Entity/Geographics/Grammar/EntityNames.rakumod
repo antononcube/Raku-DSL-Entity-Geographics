@@ -73,5 +73,5 @@ role DSL::Entity::Geographics::Grammar::EntityNames
     }
 
     #------------------------------------------------------
-    regex entity-city-and-state-name { <entity-city-name> [\s*','?\s*] <entity-state-name> }
+    regex entity-city-and-state-name { <entity-city-name> [ [\s*','?\s*] <entity-state-name> ]? }
 }

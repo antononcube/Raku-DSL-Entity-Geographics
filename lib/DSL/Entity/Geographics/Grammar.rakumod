@@ -54,8 +54,7 @@ grammar DSL::Entity::Geographics::Grammar
         <entity-region-adjective> ||
         <entity-region-name> ||
         <entity-state-name> ||
-        <entity-city-and-state-name> ||
-        <entity-city-name> }
+        <entity-city-and-state-name>}
 
     rule geographic-entity-type  { 'counties' | 'cities' | 'states' | 'people' }
 
