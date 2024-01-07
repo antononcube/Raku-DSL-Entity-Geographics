@@ -64,6 +64,39 @@ multi ToGeographicEntityCode( Str $command, Str $target = 'WL-System', *%args ) 
 }
 
 #-----------------------------------------------------------
+#| Makes Geographical identifier from given country, state, and city names.
+proto sub make-geographics-id(|) is export {*}
+
+multi sub make-geographics-id($country, $state, $city) {
+    return make-geographics-id(:$country, :$state, :$city);
+}
+
+multi sub make-geographics-id(:$country, :$state, :$city) {
+    return do given ($country, $state, $city) {
+        when (Whatever, Whatever, Whatever) {
+            die 'At least one of the arguments have to be string.';
+        }
+        when (Whatever, Whatever, Str:D) {
+            'CITY_NAME-' ~ $city.subst(/\h+/, '_', :g);
+        }
+        when (Whatever, Str:D, Whatever) {
+            'STATE_NAME-' ~ $state.subst(/\h+/, '_', :g);
+        }
+        when (Str:D, Whatever, Whatever) {
+            'COUNTRY_NAME-' ~ $country.subst(/\h+/, '_', :g);
+        }
+        when (Whatever, Str:D, Str:D) {
+            # Of course, we have to verify that that ID can be found in the data.
+            # But that is not done in this "lightweight" function.
+            make-geographics-id('UnitedStates', $state, $city);
+        }
+        default {
+            ($country, $state, $city).join('-').subst(/\h+/, '_', :g);
+        }
+    }
+}
+
+#-----------------------------------------------------------
 $resourceObj := BEGIN {
     my DSL::Entity::Geographics::ResourceAccess $obj .= new;
     $obj.ingest-resource-files();
