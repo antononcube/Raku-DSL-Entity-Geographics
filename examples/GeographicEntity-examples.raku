@@ -16,38 +16,40 @@ use DSL::Entity::Geographics::ResourceAccess;
 #
 #say 'Number of resource objects:', $resource.getNumberOfInstances();
 
+say DSL::Entity::Geographics::resource-access-object().getNameToEntityID()<City>.elems;
+
 my $pCOMMAND = DSL::Entity::Geographics::Grammar;
 
 $pCOMMAND.set-resources(DSL::Entity::Geographics::resource-access-object());
+$pCOMMAND.get-resources().maxDist = 1;
 
 say DSL::Entity::Geographics::resource-access-object().getNameToEntityID()<Country>.values.pick(12).raku;
 say DSL::Entity::Geographics::resource-access-object().getNameToEntityID()<Country-Adjective>.values.pick(12).raku;
 
 #use Grammar::Tracer;
 
-say $pCOMMAND.parse('Argentina', rule => 'geographic-entity-command');
-say $pCOMMAND.parse('Аржентина', rule => 'geographic-entity-command');
-#
+#say $pCOMMAND.parse('Argentina', rule => 'geographic-entity-command');
+#say $pCOMMAND.parse('Аржентина', rule => 'geographic-entity-command');
 #say $pCOMMAND.parse('Bulgarian', rule => 'geographic-entity-command');
-#
 #say $pCOMMAND.parse('United States', rule => 'geographic-entity-command');
-#
 #say $pCOMMAND.parse('how many people in United States');
-
 
 say "=" x 60;
 
-
 my @testCommands = (
-'Argentina',
-'Mediterranian',
+'Argentine',
+'Mediterranean',
 'Средиземноморски',
-'Арджентина',
+'Аржентина',
 'Гръцки',
 'Alabama',
 'New Hampshire',
-'Fort Lauderdale',
-'Пенсилвания'
+'Atlanta',
+'Atlanta, GA',
+'atlanta and',
+'Пенсилвания',
+'Fort Lauderdale, FL',
+'Fort Lauderdale Florida',
 );
 
 
