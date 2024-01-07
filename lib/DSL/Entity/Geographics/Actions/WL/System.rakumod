@@ -127,7 +127,9 @@ class DSL::Entity::Geographics::Actions::WL::System
     method entity-city-and-state-name($/) {
         # We have to make sure that the state-name-and-city-name key exists.
         # TBF...
-        if $<entity-city-name>.made.contains($<entity-state-name>.made.subst('"'):g) {
+        if !$<entity-state-name>.defined {
+            make $<entity-city-name>.made;
+        } elsif $<entity-city-name>.made.contains($<entity-state-name>.made.subst('"'):g) {
             make $<entity-city-name>.made;
         } else {
             # Here we assume that the IDs are in the form <country>-<state>-<city>
