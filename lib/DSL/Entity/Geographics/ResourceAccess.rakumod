@@ -1,6 +1,7 @@
 use DSL::Shared::Utilities::FuzzyMatching;
 use DSL::Shared::Utilities::MetaSpecsProcessing;
 use DSL::Shared::Entity::ResourceAccess;
+use JSON::Fast;
 
 class DSL::Entity::Geographics::ResourceAccess
         is DSL::Shared::Entity::ResourceAccess {
