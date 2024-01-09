@@ -53,7 +53,7 @@ my @testCommands = (
 );
 
 
-my @targets = ('WL-System');
+my @targets = <Raku-System WL-System>;
 
 for @testCommands -> $c {
     say "=" x 30;
@@ -64,7 +64,7 @@ for @testCommands -> $c {
         say '-' x 30;
         my $start = now;
         my $res = ToGeographicEntityCode($c, $t);
-        say "Result: $res";
+        say "Result: {$res.raku}";
         say "time:", now - $start;
         say $res;
     }
