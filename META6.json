@@ -16,6 +16,7 @@
   "provides": {
     "DSL::Entity::Geographics": "lib/DSL/Entity/Geographics.rakumod",
     "DSL::Entity::Geographics::Actions::Bulgarian::Standard": "lib/DSL/Entity/Geographics/Actions/Bulgarian/Standard.rakumod",
+    "DSL::Entity::Geographics::Actions::Raku::System": "lib/DSL/Entity/Geographics/Actions/Raku/System.rakumod",
     "DSL::Entity::Geographics::Actions::WL::Entity": "lib/DSL/Entity/Geographics/Actions/WL/Entity.rakumod",
     "DSL::Entity::Geographics::Actions::WL::System": "lib/DSL/Entity/Geographics/Actions/WL/System.rakumod",
     "DSL::Entity::Geographics::Grammar": "lib/DSL/Entity/Geographics/Grammar.rakumod",
