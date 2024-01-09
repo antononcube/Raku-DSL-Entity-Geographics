@@ -6,7 +6,8 @@ use JSON::Fast;
 class DSL::Entity::Geographics::ResourceAccess
         is DSL::Shared::Entity::ResourceAccess {
 
-    my %.countryStateCity;
+    has %.countryStateCity;
+    has Str $.defaultCountry is rw = 'UnitedStates';
 
     #-----------------------------------------------------------
     # OVERRIDE-START
