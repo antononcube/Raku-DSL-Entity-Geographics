@@ -18,6 +18,7 @@ unit module DSL::Entity::Geographics;
 use DSL::Shared::Utilities::CommandProcessing;
 
 use DSL::Entity::Geographics::Grammar;
+use DSL::Entity::Geographics::Actions::Raku::System;
 use DSL::Entity::Geographics::Actions::WL::Entity;
 use DSL::Entity::Geographics::Actions::WL::System;
 
@@ -26,6 +27,8 @@ use DSL::Entity::Geographics::Actions::Bulgarian::Standard;
 #-----------------------------------------------------------
 my %targetToAction =
     "Mathematica"      => DSL::Entity::Geographics::Actions::WL::System,
+    "Raku"             => DSL::Entity::Geographics::Actions::Raku::System,
+    "Raku-System"      => DSL::Entity::Geographics::Actions::Raku::System,
     "WL"               => DSL::Entity::Geographics::Actions::WL::System,
     "WL-System"        => DSL::Entity::Geographics::Actions::WL::System,
     "WL-Entity"        => DSL::Entity::Geographics::Actions::WL::Entity,
@@ -67,33 +70,52 @@ multi ToGeographicEntityCode( Str $command, Str $target = 'WL-System', *%args ) 
 #| Makes Geographical identifier from given country, state, and city names.
 proto sub make-geographics-id(|) is export {*}
 
-multi sub make-geographics-id($country, $state, $city) {
-    return make-geographics-id(:$country, :$state, :$city);
+multi sub make-geographics-id($country, $state, $city, :$default-country = Whatever) {
+    return make-geographics-id(:$country, :$state, :$city, :$default-country);
 }
 
-multi sub make-geographics-id(:$country, :$state, :$city) {
+multi sub make-geographics-id(:$country, :$state, :$city, :$default-country is copy = Whatever) {
+
+    if $default-country.isa(Whatever) { $default-country = 'UnitedStates'; }
+
     return do given ($country, $state, $city) {
         when (Whatever, Whatever, Whatever) {
             die 'At least one of the arguments have to be string.';
         }
         when (Whatever, Whatever, Str:D) {
-            'CITY_NAME-' ~ $city.subst(/\h+/, '_', :g);
+            'CITYNAME-' ~ $city.subst(/\h+/, '_', :g);
         }
         when (Whatever, Str:D, Whatever) {
-            'STATE_NAME-' ~ $state.subst(/\h+/, '_', :g);
+            'STATENAME-' ~ $state.subst(/\h+/, '_', :g);
         }
         when (Str:D, Whatever, Whatever) {
-            'COUNTRY_NAME-' ~ $country.subst(/\h+/, '_', :g);
+            'COUNTRYNAME-' ~ $country.subst(/\h+/, '_', :g);
         }
         when (Whatever, Str:D, Str:D) {
             # Of course, we have to verify that that ID can be found in the data.
             # But that is not done in this "lightweight" function.
-            make-geographics-id('UnitedStates', $state, $city);
+            make-geographics-id($default-country, $state, $city);
         }
         default {
             ($country, $state, $city).join('-').subst(/\h+/, '_', :g);
         }
     }
+}
+
+#-----------------------------------------------------------
+sub interpret-geographics-id(Str $id, Bool :p(:$pairs) = False) is export {
+    my @parts = $id.split('-').map({ $_.subst('_', ' '):g });
+    if $pairs {
+        if @parts.elems == 2 {
+            return (<type name>.Array Z=> @parts).List;
+        } elsif @parts.elems == 3 {
+            return (<country state city>.Array Z=> @parts).List;
+        } else {
+            warn 'Cannot interpret the geographics ID parititioning into pairs.';
+            return Nil;
+        }
+    }
+    return @parts;
 }
 
 #-----------------------------------------------------------
