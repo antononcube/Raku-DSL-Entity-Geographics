@@ -70,11 +70,19 @@ multi ToGeographicEntityCode( Str $command, Str $target = 'WL-System', *%args ) 
 #| Makes Geographical identifier from given country, state, and city names.
 proto sub make-geographics-id(|) is export {*}
 
-multi sub make-geographics-id($country, $state, $city, :$default-country = Whatever, Str :$sep = '|', Str :$spc = '_') {
-    return make-geographics-id(:$country, :$state, :$city, :$default-country, :$sep, :$spc);
+multi sub make-geographics-id($country, $state, $city,
+                              :$default-country = Whatever,
+                              Str :$sep = '|',
+                              Str :$spc = '_',
+                              Str :$comma = '') {
+    return make-geographics-id(:$country, :$state, :$city, :$default-country, :$sep, :$spc, :$comma);
 }
 
-multi sub make-geographics-id(:$country, :$state, :$city, :$default-country is copy = Whatever, Str :$sep = '|', Str :$spc = '_') {
+multi sub make-geographics-id(:$country!, :$state!, :$city!,
+                              :$default-country is copy = Whatever,
+                              Str :$sep = '|',
+                              Str :$spc = '_',
+                              Str :$comma = '') {
 
     if $default-country.isa(Whatever) { $default-country = 'UnitedStates'; }
 
@@ -97,14 +105,20 @@ multi sub make-geographics-id(:$country, :$state, :$city, :$default-country is c
             make-geographics-id($default-country, $state, $city, :$sep, :$spc);
         }
         default {
-            ($country, $state, $city).join($sep).subst(/\h+/, $spc, :g);
+            ($country, $state, $city).join($sep).subst(/\h+/, $spc, :g).subst(',', $comma, :g);
         }
     }
 }
 
 #-----------------------------------------------------------
-sub interpret-geographics-id(Str $id, Bool :p(:$pairs) = False, Str :$sep = '|', Str :$spc = '_') is export {
-    my @parts = $id.split($sep).map({ $_.subst($spc, ' '):g });
+sub interpret-geographics-id(Str $id, Bool :p(:$pairs) = False, Str :$sep = '|', Str :$spc = '_', Str :$comma = '') is export {
+    my @parts = $id.split($sep);
+    if $spc {
+        @parts = @parts.map({ $_.subst($spc, ' '):g })
+    }
+    if $comma {
+        @parts = @parts.map({ $_.subst($comma, ','):g })
+    }
     if $pairs {
         if @parts.elems == 2 {
             return (<type name>.Array Z=> @parts).List;
