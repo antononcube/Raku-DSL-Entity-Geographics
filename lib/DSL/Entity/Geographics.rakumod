@@ -70,11 +70,11 @@ multi ToGeographicEntityCode( Str $command, Str $target = 'WL-System', *%args ) 
 #| Makes Geographical identifier from given country, state, and city names.
 proto sub make-geographics-id(|) is export {*}
 
-multi sub make-geographics-id($country, $state, $city, :$default-country = Whatever) {
-    return make-geographics-id(:$country, :$state, :$city, :$default-country);
+multi sub make-geographics-id($country, $state, $city, :$default-country = Whatever, Str :$sep = '|', Str :$spc = '_') {
+    return make-geographics-id(:$country, :$state, :$city, :$default-country, :$sep, :$spc);
 }
 
-multi sub make-geographics-id(:$country, :$state, :$city, :$default-country is copy = Whatever) {
+multi sub make-geographics-id(:$country, :$state, :$city, :$default-country is copy = Whatever, Str :$sep = '|', Str :$spc = '_') {
 
     if $default-country.isa(Whatever) { $default-country = 'UnitedStates'; }
 
@@ -83,28 +83,28 @@ multi sub make-geographics-id(:$country, :$state, :$city, :$default-country is c
             die 'At least one of the arguments have to be string.';
         }
         when (Whatever, Whatever, Str:D) {
-            'CITYNAME-' ~ $city.subst(/\h+/, '_', :g);
+            'CITYNAME' ~ $sep ~ $city.subst(/\h+/, $spc, :g);
         }
         when (Whatever, Str:D, Whatever) {
-            'STATENAME-' ~ $state.subst(/\h+/, '_', :g);
+            'STATENAME' ~ $sep ~ $state.subst(/\h+/, $spc, :g);
         }
         when (Str:D, Whatever, Whatever) {
-            'COUNTRYNAME-' ~ $country.subst(/\h+/, '_', :g);
+            'COUNTRYNAME' ~ $sep ~ $country.subst(/\h+/, $spc, :g);
         }
         when (Whatever, Str:D, Str:D) {
             # Of course, we have to verify that that ID can be found in the data.
             # But that is not done in this "lightweight" function.
-            make-geographics-id($default-country, $state, $city);
+            make-geographics-id($default-country, $state, $city, :$sep, :$spc);
         }
         default {
-            ($country, $state, $city).join('-').subst(/\h+/, '_', :g);
+            ($country, $state, $city).join($sep).subst(/\h+/, $spc, :g);
         }
     }
 }
 
 #-----------------------------------------------------------
-sub interpret-geographics-id(Str $id, Bool :p(:$pairs) = False) is export {
-    my @parts = $id.split('-').map({ $_.subst('_', ' '):g });
+sub interpret-geographics-id(Str $id, Bool :p(:$pairs) = False, Str :$sep = '|', Str :$spc = '_') is export {
+    my @parts = $id.split($sep).map({ $_.subst($spc, ' '):g });
     if $pairs {
         if @parts.elems == 2 {
             return (<type name>.Array Z=> @parts).List;
