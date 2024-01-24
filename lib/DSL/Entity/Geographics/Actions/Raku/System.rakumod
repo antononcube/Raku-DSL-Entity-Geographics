@@ -100,12 +100,17 @@ class DSL::Entity::Geographics::Actions::Raku::System
         } elsif $<entity-city-name>.made.contains($<entity-state-name>.made.subst('"'):g) {
             make $<entity-city-name>.made;
         } else {
-            # Here we assume that the IDs are in the form <country>-<state>-<city>
-            my $state = $<entity-state-name>.made.split('-').tail.trans(['"', '_'] => ['', ' ']);
-            my $city = $<entity-city-name>.made.split('-').tail.trans(['"', '_'] => ['', ' ']);
+            # This should be refactored to use the _code_ of the functions:
+            #   interpret-geographics-id and make-geographics-id from Data::Geographics
+            # instead of using ad hoc the following implementation.
 
-            if $!resources.countryStateCity{$!resources.defaultCountry.subst('_', ''):g ; $state ; $city } {
-                make "{$!resources.defaultCountry}-{$state.subst(' ', '_'):g}-{$city.subst(' ', '_'):g}";
+            # Here we assume that the IDs are in the form <country>.<state>.<city>
+            my $state = $<entity-state-name>.made.split('.').tail.trans(['"', '_'] => ['', ' ']);
+            my $city = $<entity-city-name>.made.split('.').tail.trans(['"', '_'] => ['', ' ']);
+
+            my @set = $!resources.countryStateCity{$!resources.defaultCountry.subst('_', ' '):g ; $state ; $city }.grep(*.defined);
+            if @set {
+                make "{$!resources.defaultCountry}.{$state.subst(' ', '_'):g}.{$city.subst(' ', '_'):g}";
             } else {
                 make 'NONE';
             }
