@@ -20,5 +20,8 @@ ok $pCOMMAND.parse('New Hampshire', rule => 'geographic-entity-command'), 'New H
 
 ok $pCOMMAND.parse('Ню Хампшир', rule => 'geographic-entity-command'), 'Siera Leone';
 
+is ToGeographicEntityCode('Florida'), ToGeographicEntityCode('FL');
+
+is ToGeographicEntityCode('New Hampshire'), ToGeographicEntityCode('NH');
 
 done-testing;

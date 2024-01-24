@@ -26,6 +26,6 @@ ok $pCOMMAND.parse('United States', rule => 'geographic-entity-command'), 'Unite
 
 like $resourceObj.name-to-entity-id('Country', 'China'), / 'China' / ;
 
-like $resourceObj.name-to-entity-id('Country', 'United States'), / 'UnitedStates' /;
+like $resourceObj.name-to-entity-id('Country', 'United States'), / 'United_States' /;
 
 done-testing;
