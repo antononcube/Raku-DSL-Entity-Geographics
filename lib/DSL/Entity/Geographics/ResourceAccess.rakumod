@@ -7,7 +7,7 @@ class DSL::Entity::Geographics::ResourceAccess
         is DSL::Shared::Entity::ResourceAccess {
 
     has %.countryStateCity;
-    has Str $.defaultCountry is rw = 'UnitedStates';
+    has Str $.defaultCountry is rw = 'United_States';
 
     #-----------------------------------------------------------
     # OVERRIDE-START
