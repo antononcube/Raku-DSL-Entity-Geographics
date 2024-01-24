@@ -1,51 +1,51 @@
-Алабама,UnitedStates-Alabama
-Аляска,UnitedStates-Alaska
-Аризона,UnitedStates-Arizona
-Арканзас,UnitedStates-Arkansas
-Калифорния,UnitedStates-California
-Колорадо,UnitedStates-Colorado
-Кънектикът,UnitedStates-Connecticut
-Делауеър,UnitedStates-Delaware
-Окръг Колумбия,UnitedStates-District_Of_Columbia
-Флорида,UnitedStates-Florida
-Джорджия,UnitedStates-Georgia
-Хаваи,UnitedStates-Hawaii
-Айдахо,UnitedStates-Idaho
-Илинойс,UnitedStates-Illinois
-Индиана,UnitedStates-Indiana
-Айова,UnitedStates-Iowa
-Канзас,UnitedStates-Kansas
-Кентъки,UnitedStates-Kentucky
-Луизиана,UnitedStates-Louisiana
-Мейн,UnitedStates-Maine
-Мериленд,UnitedStates-Maryland
-Масачузетс,UnitedStates-Massachusetts
-Мичиган,UnitedStates-Michigan
-Минесота,UnitedStates-Minnesota
-Мисисипи,UnitedStates-Mississippi
-Мисури,UnitedStates-Missouri
-Монтана,UnitedStates-Montana
-Небраска,UnitedStates-Nebraska
-Невада,UnitedStates-Nevada
-Ню Хампшир,UnitedStates-New_Hampshire
-Ню Джърси,UnitedStates-New_Jersey
-Ню Мексико,UnitedStates-New_Mexico
-Ню Йорк,UnitedStates-New_York
-Северна Каролина,UnitedStates-North_Carolina
-Северна Дакота,UnitedStates-North_Dakota
-Охайо,UnitedStates-Ohio
-Оклахома,UnitedStates-Oklahoma
-Орегон,UnitedStates-Oregon
-Пенсилвания,UnitedStates-Pennsylvania
-Род Айлънд,UnitedStates-Rhode_Island
-Южна Каролина,UnitedStates-South_Carolina
-Южна Дакота,UnitedStates-South_Dakota
-Тенеси,UnitedStates-Tennessee
-Тексас,UnitedStates-Texas
-Юта,UnitedStates-Utah
-Върмонт,UnitedStates-Vermont
-Вирджиния,UnitedStates-Virginia
-Вашингтон,UnitedStates-Washington
-Западна Вирджиния,UnitedStates-West_Virginia
-Уисконсин,UnitedStates-Wisconsin
-Уайоминг,UnitedStates-Wyoming
+Алабама,STATENAME.Alabama
+Аляска,STATENAME.Alaska
+Аризона,STATENAME.Arizona
+Арканзас,STATENAME.Arkansas
+Калифорния,STATENAME.California
+Колорадо,STATENAME.Colorado
+Кънектикът,STATENAME.Connecticut
+Делауеър,STATENAME.Delaware
+Окръг Колумбия,STATENAME.District_Of_Columbia
+Флорида,STATENAME.Florida
+Джорджия,STATENAME.Georgia
+Хаваи,STATENAME.Hawaii
+Айдахо,STATENAME.Idaho
+Илинойс,STATENAME.Illinois
+Индиана,STATENAME.Indiana
+Айова,STATENAME.Iowa
+Канзас,STATENAME.Kansas
+Кентъки,STATENAME.Kentucky
+Луизиана,STATENAME.Louisiana
+Мейн,STATENAME.Maine
+Мериленд,STATENAME.Maryland
+Масачузетс,STATENAME.Massachusetts
+Мичиган,STATENAME.Michigan
+Минесота,STATENAME.Minnesota
+Мисисипи,STATENAME.Mississippi
+Мисури,STATENAME.Missouri
+Монтана,STATENAME.Montana
+Небраска,STATENAME.Nebraska
+Невада,STATENAME.Nevada
+Ню Хампшир,STATENAME.New_Hampshire
+Ню Джърси,STATENAME.New_Jersey
+Ню Мексико,STATENAME.New_Mexico
+Ню Йорк,STATENAME.New_York
+Северна Каролина,STATENAME.North_Carolina
+Северна Дакота,STATENAME.North_Dakota
+Охайо,STATENAME.Ohio
+Оклахома,STATENAME.Oklahoma
+Орегон,STATENAME.Oregon
+Пенсилвания,STATENAME.Pennsylvania
+Род Айлънд,STATENAME.Rhode_Island
+Южна Каролина,STATENAME.South_Carolina
+Южна Дакота,STATENAME.South_Dakota
+Тенеси,STATENAME.Tennessee
+Тексас,STATENAME.Texas
+Юта,STATENAME.Utah
+Върмонт,STATENAME.Vermont
+Вирджиния,STATENAME.Virginia
+Вашингтон,STATENAME.Washington
+Западна Вирджиния,STATENAME.West_Virginia
+Уисконсин,STATENAME.Wisconsin
+Уайоминг,STATENAME.Wyoming

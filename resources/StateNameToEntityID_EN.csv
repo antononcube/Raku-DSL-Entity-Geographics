@@ -1,102 +1,102 @@
-AL,UnitedStates-Alabama
-Alabama,UnitedStates-Alabama
-AK,UnitedStates-Alaska
-Alaska,UnitedStates-Alaska
-AZ,UnitedStates-Arizona
-Arizona,UnitedStates-Arizona
-AR,UnitedStates-Arkansas
-Arkansas,UnitedStates-Arkansas
-CA,UnitedStates-California
-California,UnitedStates-California
-CO,UnitedStates-Colorado
-Colorado,UnitedStates-Colorado
-CT,UnitedStates-Connecticut
-Connecticut,UnitedStates-Connecticut
-DE,UnitedStates-Delaware
-Delaware,UnitedStates-Delaware
-District Of Columbia,UnitedStates-District_Of_Columbia
-DC,UnitedStates-District_Of_Columbia
-FL,UnitedStates-Florida
-Florida,UnitedStates-Florida
-GA,UnitedStates-Georgia
-Georgia,UnitedStates-Georgia
-HI,UnitedStates-Hawaii
-Hawaii,UnitedStates-Hawaii
-ID,UnitedStates-Idaho
-Idaho,UnitedStates-Idaho
-IL,UnitedStates-Illinois
-Illinois,UnitedStates-Illinois
-IN,UnitedStates-Indiana
-Indiana,UnitedStates-Indiana
-IA,UnitedStates-Iowa
-Iowa,UnitedStates-Iowa
-KS,UnitedStates-Kansas
-Kansas,UnitedStates-Kansas
-KY,UnitedStates-Kentucky
-Kentucky,UnitedStates-Kentucky
-LA,UnitedStates-Louisiana
-Louisiana,UnitedStates-Louisiana
-ME,UnitedStates-Maine
-Maine,UnitedStates-Maine
-MD,UnitedStates-Maryland
-Maryland,UnitedStates-Maryland
-MA,UnitedStates-Massachusetts
-Massachusetts,UnitedStates-Massachusetts
-MI,UnitedStates-Michigan
-Michigan,UnitedStates-Michigan
-MN,UnitedStates-Minnesota
-Minnesota,UnitedStates-Minnesota
-MS,UnitedStates-Mississippi
-Mississippi,UnitedStates-Mississippi
-MO,UnitedStates-Missouri
-Missouri,UnitedStates-Missouri
-MT,UnitedStates-Montana
-Montana,UnitedStates-Montana
-NE,UnitedStates-Nebraska
-Nebraska,UnitedStates-Nebraska
-NV,UnitedStates-Nevada
-Nevada,UnitedStates-Nevada
-NH,UnitedStates-New_Hampshire
-New Hampshire,UnitedStates-New_Hampshire
-NJ,UnitedStates-New_Jersey
-New Jersey,UnitedStates-New_Jersey
-NM,UnitedStates-New_Mexico
-New Mexico,UnitedStates-New_Mexico
-NY,UnitedStates-New_York
-New York,UnitedStates-New_York
-NC,UnitedStates-North_Carolina
-North Carolina,UnitedStates-North_Carolina
-ND,UnitedStates-North_Dakota
-North Dakota,UnitedStates-North_Dakota
-OH,UnitedStates-Ohio
-Ohio,UnitedStates-Ohio
-OK,UnitedStates-Oklahoma
-Oklahoma,UnitedStates-Oklahoma
-OR,UnitedStates-Oregon
-Oregon,UnitedStates-Oregon
-PA,UnitedStates-Pennsylvania
-Pennsylvania,UnitedStates-Pennsylvania
-RI,UnitedStates-Rhode_Island
-Rhode Island,UnitedStates-Rhode_Island
-SC,UnitedStates-South_Carolina
-South Carolina,UnitedStates-South_Carolina
-SD,UnitedStates-South_Dakota
-South Dakota,UnitedStates-South_Dakota
-TN,UnitedStates-Tennessee
-Tennessee,UnitedStates-Tennessee
-TX,UnitedStates-Texas
-Texas,UnitedStates-Texas
-UT,UnitedStates-Utah
-Utah,UnitedStates-Utah
-VT,UnitedStates-Vermont
-Vermont,UnitedStates-Vermont
-VA,UnitedStates-Virginia
-Virginia,UnitedStates-Virginia
-WA,UnitedStates-Washington
-Washington,UnitedStates-Washington
-WV,UnitedStates-West_Virginia
-West Virginia,UnitedStates-West_Virginia
-WI,UnitedStates-Wisconsin
-Wisconsin,UnitedStates-Wisconsin
-WY,UnitedStates-Wyoming
-Wyoming,UnitedStates-Wyoming
+AL,STATENAME.Alabama
+Alabama,STATENAME.Alabama
+AK,STATENAME.Alaska
+Alaska,STATENAME.Alaska
+AZ,STATENAME.Arizona
+Arizona,STATENAME.Arizona
+AR,STATENAME.Arkansas
+Arkansas,STATENAME.Arkansas
+CA,STATENAME.California
+California,STATENAME.California
+CO,STATENAME.Colorado
+Colorado,STATENAME.Colorado
+CT,STATENAME.Connecticut
+Connecticut,STATENAME.Connecticut
+DE,STATENAME.Delaware
+Delaware,STATENAME.Delaware
+District Of Columbia,STATENAME.District_Of_Columbia
+DC,STATENAME.District_Of_Columbia
+FL,STATENAME.Florida
+Florida,STATENAME.Florida
+GA,STATENAME.Georgia
+Georgia,STATENAME.Georgia
+HI,STATENAME.Hawaii
+Hawaii,STATENAME.Hawaii
+ID,STATENAME.Idaho
+Idaho,STATENAME.Idaho
+IL,STATENAME.Illinois
+Illinois,STATENAME.Illinois
+IN,STATENAME.Indiana
+Indiana,STATENAME.Indiana
+IA,STATENAME.Iowa
+Iowa,STATENAME.Iowa
+KS,STATENAME.Kansas
+Kansas,STATENAME.Kansas
+KY,STATENAME.Kentucky
+Kentucky,STATENAME.Kentucky
+LA,STATENAME.Louisiana
+Louisiana,STATENAME.Louisiana
+ME,STATENAME.Maine
+Maine,STATENAME.Maine
+MD,STATENAME.Maryland
+Maryland,STATENAME.Maryland
+MA,STATENAME.Massachusetts
+Massachusetts,STATENAME.Massachusetts
+MI,STATENAME.Michigan
+Michigan,STATENAME.Michigan
+MN,STATENAME.Minnesota
+Minnesota,STATENAME.Minnesota
+MS,STATENAME.Mississippi
+Mississippi,STATENAME.Mississippi
+MO,STATENAME.Missouri
+Missouri,STATENAME.Missouri
+MT,STATENAME.Montana
+Montana,STATENAME.Montana
+NE,STATENAME.Nebraska
+Nebraska,STATENAME.Nebraska
+NV,STATENAME.Nevada
+Nevada,STATENAME.Nevada
+NH,STATENAME.New_Hampshire
+New Hampshire,STATENAME.New_Hampshire
+NJ,STATENAME.New_Jersey
+New Jersey,STATENAME.New_Jersey
+NM,STATENAME.New_Mexico
+New Mexico,STATENAME.New_Mexico
+NY,STATENAME.New_York
+New York,STATENAME.New_York
+NC,STATENAME.North_Carolina
+North Carolina,STATENAME.North_Carolina
+ND,STATENAME.North_Dakota
+North Dakota,STATENAME.North_Dakota
+OH,STATENAME.Ohio
+Ohio,STATENAME.Ohio
+OK,STATENAME.Oklahoma
+Oklahoma,STATENAME.Oklahoma
+OR,STATENAME.Oregon
+Oregon,STATENAME.Oregon
+PA,STATENAME.Pennsylvania
+Pennsylvania,STATENAME.Pennsylvania
+RI,STATENAME.Rhode_Island
+Rhode Island,STATENAME.Rhode_Island
+SC,STATENAME.South_Carolina
+South Carolina,STATENAME.South_Carolina
+SD,STATENAME.South_Dakota
+South Dakota,STATENAME.South_Dakota
+TN,STATENAME.Tennessee
+Tennessee,STATENAME.Tennessee
+TX,STATENAME.Texas
+Texas,STATENAME.Texas
+UT,STATENAME.Utah
+Utah,STATENAME.Utah
+VT,STATENAME.Vermont
+Vermont,STATENAME.Vermont
+VA,STATENAME.Virginia
+Virginia,STATENAME.Virginia
+WA,STATENAME.Washington
+Washington,STATENAME.Washington
+WV,STATENAME.West_Virginia
+West Virginia,STATENAME.West_Virginia
+WI,STATENAME.Wisconsin
+Wisconsin,STATENAME.Wisconsin
+WY,STATENAME.Wyoming
+Wyoming,STATENAME.Wyoming
