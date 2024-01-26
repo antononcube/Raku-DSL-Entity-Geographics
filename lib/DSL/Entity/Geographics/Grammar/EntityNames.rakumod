@@ -1,10 +1,4 @@
-use DSL::Shared::Entity::Grammar::EntityNames;
-use DSL::Shared::Roles::English::PipelineCommand;
-use DSL::Shared::Utilities::FuzzyMatching;
-
-role DSL::Entity::Geographics::Grammar::EntityNames
-        does DSL::Shared::Entity::Grammar::EntityNames
-        does DSL::Shared::Roles::English::PipelineCommand {
+role DSL::Entity::Geographics::Grammar::EntityNames {
 
     #------------------------------------------------------
     proto regex entity-country-adjective {*}

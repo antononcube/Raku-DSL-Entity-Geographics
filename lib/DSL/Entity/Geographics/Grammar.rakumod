@@ -28,13 +28,17 @@
 #==============================================================================
 =end comment
 
+use DSL::Shared::Entity::Grammar::EntityNames;
 use DSL::Shared::Roles::ErrorHandling;
+use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Entity::Geographics::ResourceAccess;
 use DSL::Entity::Geographics::Grammar::EntityNames;
 
 grammar DSL::Entity::Geographics::Grammar
-        does DSL::Shared::Roles::ErrorHandling
-        does DSL::Entity::Geographics::Grammar::EntityNames {
+        does DSL::Entity::Geographics::Grammar::EntityNames
+        does DSL::Shared::Entity::Grammar::EntityNames
+        does DSL::Shared::Roles::English::PipelineCommand
+        does DSL::Shared::Roles::ErrorHandling {
 
     my DSL::Entity::Geographics::ResourceAccess $resources;
 
