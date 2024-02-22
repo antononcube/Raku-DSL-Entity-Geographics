@@ -1,5 +1,5 @@
 
-use lib '.';
+#use lib '.';
 
 use DSL::Entity::Geographics;
 use DSL::Entity::Geographics::ResourceAccess;
@@ -17,6 +17,10 @@ use DSL::Entity::Geographics::ResourceAccess;
 #say 'Number of resource objects:', $resource.getNumberOfInstances();
 
 say DSL::Entity::Geographics::resource-access-object().getNameToEntityID()<City>.elems;
+say DSL::Entity::Geographics::resource-access-object().getNameToEntityID()<State>.elems;
+say DSL::Entity::Geographics::resource-access-object().getNameToEntityID()<State>;
+
+say DSL::Entity::Geographics::resource-access-object().stateNameToAbbrv;
 
 my $pCOMMAND = DSL::Entity::Geographics::Grammar;
 
@@ -50,10 +54,13 @@ my @testCommands = (
 'Пенсилвания',
 'Fort Lauderdale, FL',
 'Fort Lauderdale Florida',
+'Chicago Florida',
+'Miami Florida',
 );
 
 
-my @targets = <Raku-System WL-System>;
+#my @targets = <Raku-System WL-System>;
+my @targets = <Raku-System>;
 
 for @testCommands -> $c {
     say "=" x 30;
