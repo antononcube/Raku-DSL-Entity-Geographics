@@ -1,0 +1,4 @@
+Changes diary of the Raku package "DSL::Entity::Geographics".
+
+0.1.6 2026-07-29
+    - Fix:Removed redundant declarations that produce compile errors.
